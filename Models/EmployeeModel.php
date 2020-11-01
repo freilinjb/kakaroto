@@ -26,11 +26,39 @@ class EmployeeModel {
         return $data -> fetchAll();
     }
 
+    static public function listarPuestroTrabajo($tabla, $item, $valor) {
+
+        $data = Conection::connect()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+        $data -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+        $data -> execute();
+        return $data -> fetchAll();
+    }
+
     static public function listarSexo($table) {
 
         $data = Conection::connect()->prepare("SELECT * FROM $table");
         $data -> execute();
         return $data -> fetchAll();
     }
-    
+
+    static public function listarTipoIdentificacion($table) {
+
+        $data = Conection::connect()->prepare("SELECT * FROM $table");
+        $data -> execute();
+        return $data -> fetchAll();
+    }
+
+    static public function listarCentro($table) {
+
+        $data = Conection::connect()->prepare("SELECT * FROM $table");
+        $data -> execute();
+        return $data -> fetchAll();
+    }    
+
+    static public function listarDepartamento($table) {
+
+        $data = Conection::connect()->prepare("SELECT * FROM $table");
+        $data -> execute();
+        return $data -> fetchAll();
+    }   
 }

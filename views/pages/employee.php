@@ -34,7 +34,7 @@
                                 Employee
                             </button>
                         </div>
-                        <table id="empleados" class="table table-bordered table-striped">
+                        <table id="empleados" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -53,7 +53,12 @@
                                 <?php
 
                                 $employee = EmployeeController::showEmployee(null, null);
+                                $clase = null;
                                 foreach ($employee as $key => $value) {
+
+                                    if ($value["Estado"] == "activo") {
+                                        $clase = "<span class='badge badge-success'>" . $value["Estado"] . "</span>";
+                                    }
 
                                     echo '<tr>
                                     <td>' . ($key + 1) . '</td>
@@ -64,7 +69,7 @@
                                     <td>' . $value["PuestoTrabajo"] . '</td>
                                     <td>' . $value["Departamento"] . '</td>             
                                     <td>' . $value["Centro"] . '</td>
-                                    <td>' . $value["Estado"] . '</td>
+                                    <td>' . $clase . '</td>
                                     <td>
                                         <div class="btn-group">    
                                         <button class="btn btn-info btnEditEmployee" data-toggle="modal" data-target="#modalEditarCliente" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-eye"></i></button>
@@ -151,11 +156,11 @@
                                                 <div class="form-group">
                                                     <label>Sexo</label>
                                                     <select class="form-control" name="sexo" id="sexo">
-                                                        <?php 
-                                                            $sexo = EmployeeController::listarSexo();
-                                                            foreach ($sexo as $index => $valor) {
-                                                                echo "<option value=".$valor["idSexo"].">".$valor["Sexo"]."</option>";
-                                                            }
+                                                        <?php
+                                                        $sexo = EmployeeController::listarSexo();
+                                                        foreach ($sexo as $index => $valor) {
+                                                            echo "<option value=" . $valor["idSexo"] . ">" . $valor["Sexo"] . "</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -171,7 +176,15 @@
                                                 <div class="form-group">
                                                     <label>Tipo de Identificacion</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" name="tipoIdentificacion" placeholder="Ingrese el apellido" required>
+                                                        <select class="form-control" name="tipoIdentificacion" id="tipoIdentificacion">
+                                                            <?php
+                                                            $tipoIdentificacion = EmployeeController::listarTipoIdentificacion();
+                                                            foreach ($tipoIdentificacion as $index => $valor) {
+                                                                echo "<option value=" . $valor["idTipoIdentificacion"] . ">" . $valor["TipoIdentificacion"] . "</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,7 +192,7 @@
                                                 <div class="form-group">
                                                     <label>Identificacion</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" name="identificacion" placeholder="Ingrese el apellido" required>
+                                                        <input type="text" class="form-control" name="identificacion" placeholder="Ingrese el numero de ducumento" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,32 +248,42 @@
                                         <div class="row">
                                             <div class="col-6-lg col-xl-6 col-sm-12">
                                                 <div class="form-group">
-                                                  <label for="">Centro de operación</label>
-                                                  <select class="form-control form-control-sm" name="centro" required>
-                                                    <option></option>
-                                                  </select>
+                                                    <label for="">Centro de operación</label>
+                                                    <select class="form-control" name="centro" required>
+                                                        <?php
+                                                        $centro = EmployeeController::listarCentro();
+                                                        foreach ($centro as $index => $valor) {
+                                                            echo "<option value=" . $valor["idCentro"] . ">" . $valor["Centro"] . "</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-6-lg col-xl-6 col-sm-12">
                                                 <div class="form-group">
-                                                  <label for="">Departamento</label>
-                                                  <select class="form-control form-control-sm" name="departamento" required>
-                                                    <option></option>
-                                                  </select>
+                                                    <label for="">Departamento</label>
+                                                    <select class="form-control" name="departamento" id="departamento" required>
+                                                        <?php
+                                                        $departamento = EmployeeController::listarDepartamento();
+                                                        foreach ($departamento as $index => $valor) {
+                                                            echo "<option value=" . $valor["idDepartamento"] . ">" . $valor["Departamento"] . "</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-6-lg col-xl-6 col-sm-12">
                                                 <div class="form-group">
-                                                  <label for="">Puesto de trabajo</label>
-                                                  <select class="form-control form-control-sm" name="puesto" required>
-                                                    <option></option>
-                                                  </select>
+                                                    <label for="">Puesto de trabajo</label>
+                                                    <select class="form-control" name="puestoTrabajo" id="puestoTrabajo" required>
+
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-6-lg col-xl-6 col-sm-12">
                                                 <div class="form-group">
-                                                  <label for="">Fecha de Ingreso</label>
-                                                  <input type="text" class="form-control" name="fechaIngreso" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" required>
+                                                    <label for="">Fecha de Ingreso</label>
+                                                    <input type="text" class="form-control" name="fechaIngreso" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" required>
 
                                                 </div>
                                             </div>
@@ -316,13 +339,5 @@
             "paging": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#empleados_wrapper  .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
     });
 </script>
