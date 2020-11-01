@@ -107,7 +107,7 @@
 <!-- MODAL -->
 <div class="modal fade" id="modalEmployeeRegister" style="display: none; padding-right: 17px;" aria-modal="true">
     <div class="modal-dialog modal-lg">
-        <form class="modal-content">
+        <form class="modal-content" id="formEmployee">
             <div class="modal-header bg-info">
                 <h4 class="modal-title">Register Employee</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -137,7 +137,7 @@
                                                 <div class="form-group">
                                                     <label>Nombre</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" name="nombre" placeholder="Ingrese el nombre" required>
+                                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre" required>
                                                     </div>
                                                     <!-- /.input group -->
                                                 </div>
@@ -147,7 +147,7 @@
                                                 <div class="form-group">
                                                     <label>Apellido</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" name="apellido" placeholder="Ingrese el apellido" required>
+                                                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido" required>
                                                     </div>
                                                     <!-- /.input group -->
                                                 </div>
@@ -184,7 +184,6 @@
                                                             }
                                                             ?>
                                                         </select>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -192,7 +191,7 @@
                                                 <div class="form-group">
                                                     <label>Identificacion</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" name="identificacion" placeholder="Ingrese el numero de ducumento" required>
+                                                        <input type="text" class="form-control" name="identificacion" id="identificacion" placeholder="Ingrese el numero de ducumento" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,7 +202,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control" name="telefono" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" required>
+                                                        <input type="text" class="form-control" name="telefono" id="telefono" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,7 +213,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fa fa-mobile"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control" name="celular" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text" required>
+                                                        <input type="text" class="form-control" name="celular" id="celular" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -225,7 +224,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                                         </div>
-                                                        <input type="email" class="form-control" name="correo">
+                                                        <input type="email" class="form-control" name="correo" id="correo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -238,7 +237,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                         </div>
-                                                        <input type="text" class="form-control" name="fechaNacimiento" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" required>
+                                                        <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,7 +248,7 @@
                                             <div class="col-6-lg col-xl-6 col-sm-12">
                                                 <div class="form-group">
                                                     <label for="">Centro de operación</label>
-                                                    <select class="form-control" name="centro" required>
+                                                    <select class="form-control" name="centro" id="centro" required>
                                                         <?php
                                                         $centro = EmployeeController::listarCentro();
                                                         foreach ($centro as $index => $valor) {
@@ -283,8 +282,7 @@
                                             <div class="col-6-lg col-xl-6 col-sm-12">
                                                 <div class="form-group">
                                                     <label for="">Fecha de Ingreso</label>
-                                                    <input type="text" class="form-control" name="fechaIngreso" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" required>
-
+                                                    <input type="text" class="form-control" name="fechaIngreso" id="fechaIngreso" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -325,9 +323,8 @@
 <script src="views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<!-- <script src="views/assets/dist/js/adminlte.min.js"></script> -->
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="views/assets/dist/js/demo.js"></script> -->
+<script src="views/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+
 <!-- Page specific script -->
 <script>
     $(function() {

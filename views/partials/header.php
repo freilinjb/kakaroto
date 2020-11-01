@@ -18,5 +18,8 @@
     <script src="views/assets/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="views/assets/dist/js/demo.js"></script> -->
+    <!-- SCRIPT PERSONAL -->
+    <script src="views/assets/js/template.js"></script>
+    <!-- END PERSONAL -->
 
 </head>

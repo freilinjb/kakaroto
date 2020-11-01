@@ -64,3 +64,42 @@ function cargarPuestoDeTrabajo() {
       },
     });
 }
+
+
+
+$(document).ready(function () {
+    $("#formEmployee").submit(function (event) {
+      event.preventDefault();
+  
+      const dato = new FormData();
+      dato.append("nombre", $("#nombre").val());
+      dato.append("apellido", $("#apellido").val());
+      dato.append("idSEXO", $("#sexo").val());
+      dato.append("idEstadoCivil", $("#estadoCivil").val());
+      dato.append("idTipoIdentificacion", $("#tipoIdentificacion").val());
+      dato.append("Identificacion", $("#identificacion").val());
+      dato.append("telefono", $("#telefono").val());
+      dato.append("celular", $("#celular").val());
+      dato.append("correo", $("#correo").val());
+      dato.append("fechaNacimiento", $("#fechaNacimiento").val());
+      dato.append("idCentro", $("#idCentro").val());
+      dato.append("idDepartamento", $("#departamento").val());
+      dato.append("idPuestoTrabajo", $("#puestoTrabajo").val());
+      dato.append("fechaIngreso", $("#fechaIngreso").val());
+  
+      $.ajax({
+        url: "ajax/EmpleadoAjax.php",
+        method: "POST",
+        data: dato,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+            console.log(respuesta);
+
+        },
+      });
+    });
+  });
+  
