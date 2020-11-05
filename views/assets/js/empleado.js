@@ -65,6 +65,13 @@ function cargarPuestoDeTrabajo() {
   });
 }
 
+$(document).ready(function () {
+  //$(selector).inputmask("99-9999999");  //static mask
+  $("#identificacion").inputmask({ mask: "999-9999999-9" }); 
+  $("#telefono").inputmask({ mask: "(999) 999-9999" }); //specifying options
+  $("#celular").inputmask({ mask: "(999) 999-9999" }); //specifying options
+  //$(selector).inputmask("9-a{1,3}9{1,3}"); //mask with dynamic syntax
+});
 // $(document).ready(function () {
 
 //   $("#formEmployee").submit(function (event) {

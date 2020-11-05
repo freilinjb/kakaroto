@@ -179,7 +179,7 @@
                                                         <label>Tipo de Identificacion</label>
                                                         <div class="input-group">
                                                             <select class="form-control" name="tipoIdentificacion" id="tipoIdentificacion">
-                                                            <option value="" disabled selected>Seleccione una opción</option>
+                                                                <option value="" disabled selected>Seleccione una opción</option>
                                                                 <?php
                                                                 $tipoIdentificacion = EmployeeController::listarTipoIdentificacion();
                                                                 foreach ($tipoIdentificacion as $index => $valor) {
@@ -241,6 +241,14 @@
                                                                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                             </div>
                                                             <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label class="custom-file-label" for="customFile">Eliga una foto</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -332,6 +340,8 @@
 <!-- jquery-validation -->
 <script src="views/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="views/assets/plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- sweetalert2 -->
+<script src="views/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Page specific script -->
 <script>
     $(function() {
@@ -341,7 +351,7 @@
             "autoWidth": false,
             "info": true,
             "paging": true,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
         }).buttons().container().appendTo('#empleados_wrapper  .col-md-6:eq(0)');
     });
 </script>

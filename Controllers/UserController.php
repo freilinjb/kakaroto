@@ -19,12 +19,11 @@ class UserController {
                 if($resquest["usuario"] == $_POST["user"] && $resquest["clave"] == $_POST["password"]) {
 
                     $_SESSION['iniciarSesion'] = true;
-                    $_SESSION['idUsuario'] = true;
+                    $_SESSION['idUsuario'] = $_POST["idUsuario"];
                     $_SESSION['nombre'] = true;
-                    $_SESSION['usuario'] = true;
-                    $_SESSION[''] = true;
-                    $_SESSION['iniciarSesion'] = true;
+                    $_SESSION['usuario'] = $_POST["user"];
                     echo "bien hecho";
+                    
                 } else {
 					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
                 }
