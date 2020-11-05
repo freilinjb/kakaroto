@@ -26,7 +26,7 @@ class UserController {
                     $_SESSION['iniciarSesion'] = true;
                     echo "bien hecho";
                 } else {
-                    echo "asdfasdf";
+					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
                 }
             }
         }

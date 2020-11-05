@@ -9,6 +9,38 @@ class EmployeeController {
         return $request;
     }
 
+    static public function registrarEmpleado($re) {
+
+        if(isset($_POST["nombre"])) {
+            if(
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["apellido"]) &&
+                preg_match('/^[0-9]+$/', $_POST["idSexo"]) &&
+                preg_match('/^[0-9]+$/', $_POST["idEstadoCivil"]) &&
+                preg_match('/^[0-9]+$/', $_POST["idTipoIdentificacion"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["Identificacion"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["celular"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["correo"]) &&
+                preg_match('/^[-.\/-0-9]+$/', $_POST["fechaNacimiento"])){
+
+                $datos = array("nombre"=>$_POST["nombre"],
+                                "apellido"=>$_POST["apellido"],
+                                "nombidSexore"=>$_POST["idSexo"],
+                                "idEstadoCivil"=>$_POST["idEstadoCivil"],
+                                "idTipoIdentificacion"=>$_POST["idTipoIdentificacion"],
+                                "Identificacion"=>$_POST["Identificacion"],
+                                "telefono"=>$_POST["telefono"],
+                                "celular"=>$_POST["celular"],
+                                "correo"=>$_POST["correo"],
+                                "fechaNacimiento"=>$_POST["fechaNacimiento"]);
+
+                
+                                print_r($datos);
+                            
+            }
+        }
+    }
+
     static public function listarEstadoCiviles($item, $valor) {
         $tabla = "estadoCivil";
         $respuesta = EmployeeModel::listarEstadoCiviles($tabla, $item, $valor);

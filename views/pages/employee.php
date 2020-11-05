@@ -107,182 +107,187 @@
 <!-- MODAL -->
 <div class="modal fade" id="modalEmployeeRegister" style="display: none; padding-right: 17px;" aria-modal="true">
     <div class="modal-dialog modal-lg">
-        <form class="modal-content" id="formEmployee">
-            <div class="modal-header bg-info">
-                <h4 class="modal-title">Register Employee</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card card-info card-outline card-outline-tabs">
-                            <div class="card-header p-0 border-bottom-0">
-                                <ul class="nav nav-tabs" id="datos-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="datospersonale-tab" data-toggle="pill" href="#datospersonale" role="tab" aria-controls="datospersonale" aria-selected="true">Información personal</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="datosempresa-tab" data-toggle="pill" href="#datosempresa" role="tab" aria-controls="datosempresa" aria-selected="false">Información laboral</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content" id="datostabContent">
-                                    <div class="tab-pane fade active show" id="datospersonale" role="tabpanel" aria-labelledby="datospersonale-tab">
-                                        <div class="row">
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <!-- Date dd/mm/yyyy -->
-                                                <div class="form-group">
-                                                    <label>Nombre</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre" required>
+        <div class="modal-content">
+            <form id="formEmployee">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title">Register Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card card-info card-outline card-outline-tabs">
+                                <div class="card-header p-0 border-bottom-0">
+                                    <ul class="nav nav-tabs" id="datos-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="datospersonale-tab" data-toggle="pill" href="#datospersonale" role="tab" aria-controls="datospersonale" aria-selected="true">Información personal</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="datosempresa-tab" data-toggle="pill" href="#datosempresa" role="tab" aria-controls="datosempresa" aria-selected="false">Información laboral</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content" id="datostabContent">
+                                        <div class="tab-pane fade active show" id="datospersonale" role="tabpanel" aria-labelledby="datospersonale-tab">
+                                            <div class="row">
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <!-- Date dd/mm/yyyy -->
+                                                    <div class="form-group">
+                                                        <label>Nombre</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre">
+                                                        </div>
+                                                        <!-- /.input group -->
                                                     </div>
-                                                    <!-- /.input group -->
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <!-- Date dd/mm/yyyy -->
-                                                <div class="form-group">
-                                                    <label>Apellido</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido" required>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <!-- Date dd/mm/yyyy -->
+                                                    <div class="form-group">
+                                                        <label>Apellido</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido">
+                                                        </div>
+                                                        <!-- /.input group -->
                                                     </div>
-                                                    <!-- /.input group -->
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Sexo</label>
-                                                    <select class="form-control" name="sexo" id="sexo">
-                                                        <?php
-                                                        $sexo = EmployeeController::listarSexo();
-                                                        foreach ($sexo as $index => $valor) {
-                                                            echo "<option value=" . $valor["idSexo"] . ">" . $valor["Sexo"] . "</option>";
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Estado Civil</label>
-                                                    <select class="form-control" name="estadoCivil" id="estadoCivil">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Tipo de Identificacion</label>
-                                                    <div class="input-group">
-                                                        <select class="form-control" name="tipoIdentificacion" id="tipoIdentificacion">
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Sexo</label>
+                                                        <select class="form-control" name="sexo" id="sexo">
+                                                            <option value="" disabled selected>Seleccione una opción</option>
                                                             <?php
-                                                            $tipoIdentificacion = EmployeeController::listarTipoIdentificacion();
-                                                            foreach ($tipoIdentificacion as $index => $valor) {
-                                                                echo "<option value=" . $valor["idTipoIdentificacion"] . ">" . $valor["TipoIdentificacion"] . "</option>";
+                                                            $sexo = EmployeeController::listarSexo();
+                                                            foreach ($sexo as $index => $valor) {
+                                                                echo "<option value=" . $valor["idSexo"] . ">" . $valor["Sexo"] . "</option>";
                                                             }
                                                             ?>
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Identificacion</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" name="identificacion" id="identificacion" placeholder="Ingrese el numero de ducumento" required>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Estado Civil</label>
+                                                        <select class="form-control" name="estadoCivil" id="estadoCivil">
+                                                        </select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Telefono fijo</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Tipo de Identificacion</label>
+                                                        <div class="input-group">
+                                                            <select class="form-control" name="tipoIdentificacion" id="tipoIdentificacion">
+                                                            <option value="" disabled selected>Seleccione una opción</option>
+                                                                <?php
+                                                                $tipoIdentificacion = EmployeeController::listarTipoIdentificacion();
+                                                                foreach ($tipoIdentificacion as $index => $valor) {
+                                                                    echo "<option value=" . $valor["idTipoIdentificacion"] . ">" . $valor["TipoIdentificacion"] . "</option>";
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
-                                                        <input type="text" class="form-control" name="telefono" id="telefono" required>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Celular</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Identificacion</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" name="identificacion" id="identificacion" placeholder="Ingrese el numero de ducumento">
                                                         </div>
-                                                        <input type="text" class="form-control" name="celular" id="celular" required>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Correo</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Telefono fijo</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="telefono" id="telefono">
                                                         </div>
-                                                        <input type="email" class="form-control" name="correo" id="correo">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <!-- Date dd/mm/yyyy -->
-                                                <div class="form-group">
-                                                    <label>Fecha de nacimiento:</label>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Celular</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="celular" id="celular">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Correo</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                            </div>
+                                                            <input type="email" class="form-control" name="correo" id="correo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <!-- Date dd/mm/yyyy -->
+                                                    <div class="form-group">
+                                                        <label>Fecha de nacimiento:</label>
 
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                            </div>
+                                                            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
                                                         </div>
-                                                        <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="datosempresa" role="tabpanel" aria-labelledby="datosempresa-tab">
-                                        <div class="row">
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="">Centro de operación</label>
-                                                    <select class="form-control" name="centro" id="centro" required>
-                                                        <?php
-                                                        $centro = EmployeeController::listarCentro();
-                                                        foreach ($centro as $index => $valor) {
-                                                            echo "<option value=" . $valor["idCentro"] . ">" . $valor["Centro"] . "</option>";
-                                                        }
-                                                        ?>
-                                                    </select>
+                                        <div class="tab-pane fade" id="datosempresa" role="tabpanel" aria-labelledby="datosempresa-tab">
+                                            <div class="row">
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="">Centro de operación</label>
+                                                        <select class="form-control" name="centro" id="centro">
+                                                            <option value="" disabled selected>Seleccione una opción</option>
+                                                            <?php
+                                                            $centro = EmployeeController::listarCentro();
+                                                            foreach ($centro as $index => $valor) {
+                                                                echo "<option value=" . $valor["idCentro"] . ">" . $valor["Centro"] . "</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="">Departamento</label>
-                                                    <select class="form-control" name="departamento" id="departamento" required>
-                                                        <?php
-                                                        $departamento = EmployeeController::listarDepartamento();
-                                                        foreach ($departamento as $index => $valor) {
-                                                            echo "<option value=" . $valor["idDepartamento"] . ">" . $valor["Departamento"] . "</option>";
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="">Departamento</label>
+                                                        <select class="form-control" name="departamento" id="departamento">
+                                                            <option value="" disabled selected>Seleccione una opción</option>
+                                                            <?php
+                                                            $departamento = EmployeeController::listarDepartamento();
+                                                            foreach ($departamento as $index => $valor) {
+                                                                echo "<option value=" . $valor["idDepartamento"] . ">" . $valor["Departamento"] . "</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="">Puesto de trabajo</label>
-                                                    <select class="form-control" name="puestoTrabajo" id="puestoTrabajo" required>
-
-                                                    </select>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="">Puesto de trabajo</label>
+                                                        <select class="form-control" name="puestoTrabajo" id="puestoTrabajo">
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6-lg col-xl-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="">Fecha de Ingreso</label>
-                                                    <input type="text" class="form-control" name="fechaIngreso" id="fechaIngreso" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" required>
+                                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="">Fecha de Ingreso</label>
+                                                        <input type="date" class="form-control" name="fechaIngreso" id="fechaIngreso">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -292,12 +297,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-info">Save changes</button>
-            </div>
-        </form>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info">Save changes</button>
+                </div>
+            </form>
+        </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
@@ -324,7 +329,9 @@
 <script src="views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="views/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
-
+<!-- jquery-validation -->
+<script src="views/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="views/assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <!-- Page specific script -->
 <script>
     $(function() {
