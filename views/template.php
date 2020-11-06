@@ -2,18 +2,21 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <?php include "partials/header.php" ?>
 
-
-<body class="hold-transition sidebar-mini layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <?php 
+            include "partials/navbar.php";
+            include "partials/asside.php";
+        ?>
     <?php
+
      if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == true){
         echo '<div class="wrapper">';
-
-        include "partials/navbar.php";
-        include "partials/asside.php";
     
         echo '<div class="content-wrapper">';
     
@@ -30,7 +33,6 @@ session_start();
             include "pages/home.php";
         }
         echo '</div>';
-        include "partials/footer.php";
     
         echo '</div>';
      } else {
@@ -38,6 +40,22 @@ session_start();
      }
     
     ?>
+
+        <?php 
+            include "partials/footer.php";
+        ?>
+        
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Bootstrap 4 -->
+    <script src="views/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="views/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="views/assets/dist/js/adminlte.min.js"></script>
+    <!-- sweetalert2 -->
+    <script src="views/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 </body>
 
 </html>

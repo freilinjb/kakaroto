@@ -80,20 +80,6 @@
                                 }
                                 ?>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Telephone</th>
-                                    <th>CellPhone</th>
-                                    <th>Puesto de trabajo</th>
-                                    <th>Departamento</th>
-                                    <th>Centro</th>
-                                    <th>Estado</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -306,7 +292,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-info">Save changes</button>
                 </div>
             </form>
@@ -315,14 +301,16 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
 <!-- END MODAL -->
 <!-- SCRIPT PERSONAL -->
 <script src="views/assets/js/empleado.js"></script>
-<!-- END PERSONAL -->
+<!-- DataTables  & Plugins -->
+
 <link rel="stylesheet" href="views/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="views/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="views/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<!-- DataTables  & Plugins -->
+
 <script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="views/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="views/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -341,7 +329,11 @@
 <script src="views/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="views/assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <!-- sweetalert2 -->
+
 <script src="views/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- sweetalert2-theme-bootstrap-4 -->
+<link rel="stylesheet" href="views/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
 <!-- Page specific script -->
 <script>
     $(function() {

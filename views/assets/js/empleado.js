@@ -200,6 +200,7 @@ $(function () {
     unhighlight: function (element, errorClass, validClass) {
       $(element).removeClass("is-invalid");
     },
+    
     submitHandler: function (e) {
       console.log("asdf");
       const dato = new FormData();
@@ -228,6 +229,8 @@ $(function () {
         dataType: "json",
         success: function (respuesta) {
           console.log(respuesta);
+          $('.form-control').val('');
+          $('#close').click();
         },
       });
     },
