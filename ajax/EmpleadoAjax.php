@@ -5,6 +5,7 @@ require_once "../Models/EmployeeModel.php";
 
 class EmpleadoAjax
 {
+    public $idEmpleado;
     public $idSexo;
     public $idDepartamento;
     public $datosEmpleado;
@@ -35,6 +36,15 @@ class EmpleadoAjax
 
         echo json_encode($respuesta);
     }
+
+    public function editarCliente() {
+        $item = "idEmpleado";
+        $valor = $this->idEmpleado;
+
+        $respuesta = EmployeeController::showEmployee($item, $valor);
+
+        echo json_encode($respuesta);
+    }
 }
 
 /*=============================================
@@ -50,7 +60,7 @@ if (isset($_POST["idSexo"]) && count($_POST) == 1) {
 /*=============================================
 CONSEGUIR LISTA DE PUESTOS DE TRABAJO POR DEPARTAMENTO
 =============================================*/ 
-else if (isset($_POST["idDepartamento"]) && count($_POST) == 1) {
+if (isset($_POST["idDepartamento"]) && count($_POST) == 1) {
 
     $departamento = new EmpleadoAjax();
     $departamento->idDepartamento = $_POST["idDepartamento"];
@@ -58,7 +68,7 @@ else if (isset($_POST["idDepartamento"]) && count($_POST) == 1) {
     
 } 
 
-else if (isset($_POST["nombre"])) {
+if (isset($_POST["nombre"])) {
     $empleado = new EmpleadoAjax();
 
     $datos = array("nombre"=>$_POST["nombre"],
@@ -79,4 +89,12 @@ else if (isset($_POST["nombre"])) {
     $empleado->datosEmpleado = $datos;
     $empleado->registrarEmpleado();
 
+}
+
+if(isset($_POST['idEmpleado'])) {
+
+    $empleado = new EmpleadoAjax();
+    $empleado->idEmpleado = $_POST['idEmpleado'];
+    $empleado->editarCliente();
+    
 }

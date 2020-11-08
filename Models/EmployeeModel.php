@@ -7,13 +7,13 @@ class EmployeeModel {
     static public function showEmployee($table, $item, $value) {
         if($item != null) {
 			$data = Conection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item");
-			$data -> bindParam(":".$item, $value, PDO::PARAM_STR);
-			$data -> execute();
+            $data -> bindParam(":".$item, $value, PDO::PARAM_STR);
+            $data -> execute();
 			return $data -> fetch();
 
 		} else {
 			$data = Conection::connect()->prepare("SELECT * FROM $table");
-			$data -> execute();
+            $data -> execute();
 			return $data -> fetchAll();
 		}
     }
@@ -21,10 +21,9 @@ class EmployeeModel {
     static public function registrarEmpleado($datos) {
 
         $request = Conection::connect()->prepare("CALL registrarEmpleado(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        print_r($datos);
 
         $request->bindParam("1", $datos["nombre"], PDO::PARAM_STR);
-		$request->bindParam("2", $datos["apellido"], PDO::PARAM_INT);
+		$request->bindParam("2", $datos["apellido"], PDO::PARAM_STR);
 		$request->bindParam("3", $datos["idSexo"], PDO::PARAM_INT);
 		$request->bindParam("4", $datos["idEstadoCivil"], PDO::PARAM_INT);
 		$request->bindParam("5", $datos["idTipoIdentificacion"], PDO::PARAM_INT);
@@ -37,7 +36,6 @@ class EmployeeModel {
 		$request->bindParam("12", $datos["idPuestoTrabajo"], PDO::PARAM_INT);
 		$request->bindParam("13", $datos["fechaNacimiento"], PDO::PARAM_STR);
         
-        print_r($request);
         $request->execute();
 
         return $request-> fetchAll();
