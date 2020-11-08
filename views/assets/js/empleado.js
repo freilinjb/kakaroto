@@ -360,6 +360,14 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
 
       console.log(respuesta);
 
+      $("#nombreP").text(respuesta["nombre"] + ' ' + respuesta["apellido"]);
+      $("#correoP").text(respuesta["Correo"]);
+      $("#telefonoP").text(respuesta["telefono"]);
+      $("#celularP").text(respuesta["celular"]);
+      $("#departamentoP").text((respuesta["PuestoTrabajo"] + ' del departamento de ' + respuesta["Departamento"]).toUpperCase());
+
+
+      
       $("#idEmpleado").val(respuesta["idEmpleado"]);
       $("#nombreEditar").val(respuesta["nombre"]);
       $("#apellidoEditar").val(respuesta["apellido"]);
@@ -375,11 +383,6 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
       $("#departamentoEditar").val(respuesta["idDepartamento"]);
       $("#puestoTrabajoEditar").val(respuesta["idPuesto"]);
       $("#fechaIngresoEditar").val(respuesta["fechaIngreso"]);
-
-      idPuesto = respuesta["idPuesto"];
-
-
-      document.getElementById("departamentoEditar").text = "newTextForApple";
     },
   });
 });
