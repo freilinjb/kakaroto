@@ -42,6 +42,31 @@ class EmployeeModel {
         return $request-> fetchAll();
     }
 
+    static public function actualizarEmpleado($datos) {
+
+        $request = Conection::connect()->prepare("CALL registrarEmpleado(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+        $request->bindParam("1", $datos["idEmpleado"], PDO::PARAM_INT);
+        $request->bindParam("2", $datos["nombre"], PDO::PARAM_STR);
+		$request->bindParam("3", $datos["apellido"], PDO::PARAM_STR);
+		$request->bindParam("4", $datos["idSexo"], PDO::PARAM_INT);
+		$request->bindParam("5", $datos["idEstadoCivil"], PDO::PARAM_INT);
+		$request->bindParam("6", $datos["idTipoIdentificacion"], PDO::PARAM_INT);
+		$request->bindParam("7", $datos["Identificacion"], PDO::PARAM_STR);
+		$request->bindParam("8", $datos["correo"], PDO::PARAM_STR);
+		$request->bindParam("9", $datos["telefono"], PDO::PARAM_STR);
+		$request->bindParam("10", $datos["celular"], PDO::PARAM_STR);
+		$request->bindParam("11", $datos["idCentro"], PDO::PARAM_INT);
+		$request->bindParam("12", $datos["idDepartamento"], PDO::PARAM_INT);
+		$request->bindParam("13", $datos["idPuestoTrabajo"], PDO::PARAM_INT);
+		$request->bindParam("14", $datos["fechaNacimiento"], PDO::PARAM_STR);
+		$request->bindParam("15", $datos["fechaIngreso"], PDO::PARAM_STR);
+        
+        $request->execute();
+
+        return $request-> fetchAll();
+    }
+
     static public function listarEstadoCiviles($tabla, $item, $valor) {
 
         $data = Conection::connect()->prepare("SELECT * FROM $tabla WHERE $item = :$item");

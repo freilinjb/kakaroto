@@ -1,4 +1,4 @@
-var idPuesto = '';
+var idPuesto = "";
 
 jQuery(document).ready(function () {
   $("#sexo").change(function () {
@@ -15,20 +15,18 @@ jQuery(document).ready(function () {
     // const dato = $("#sexo").val();
 
     cargarPuestoDeTrabajo($("#departamento").val());
-    console.log('asdf');
+    console.log("asdf");
   });
-
 
   $("#departamentoEditar").change(function () {
     // const dato = $("#sexo").val();
-    
+
     cargarPuestoDeTrabajo($("#departamentoEditar").val());
-    console.log('asdf');
+    console.log("asdf");
   });
 });
 
 cargarEstadoCiviles();
-
 
 //EDITAR
 cargarEstadoCivilesEditar();
@@ -49,7 +47,8 @@ function cargarEstadoCiviles() {
     success: function (respuesta) {
       let sexo;
       $("#estadoCivil").children().remove().end();
-      sexo = '<option value="" disabled selected>Seleccione una opción</option>';
+      sexo =
+        '<option value="" disabled selected>Seleccione una opción</option>';
       respuesta.forEach((element) => {
         sexo += `<option value=${element["idEstadoCivil"]}>${element["EstadoCivil"]}</option>`;
       });
@@ -105,8 +104,9 @@ function cargarPuestoDeTrabajo(valor) {
 
       $("#puestoTrabajo").children().remove().end();
       $("#puestoTrabajoEditar").children().remove().end();
-      
-      puesto = '<option value="" disabled selected>Seleccione una opción</option>';
+
+      puesto =
+        '<option value="" disabled selected>Seleccione una opción</option>';
 
       respuesta.forEach((element) => {
         puesto += `<option value=${element["idPuesto"]}>${element["PuestoTrabajo"]}</option>`;
@@ -223,7 +223,6 @@ $(function () {
             Swal.fire("Ok!", "Se ha guardado correctamente!", "success");
           }
 
-          
           console.log(respuesta);
           $(".form-control").val("");
           $("#close").click();
@@ -232,7 +231,6 @@ $(function () {
     },
   });
 });
-
 
 $(function () {
   $.validator.setDefaults({
@@ -250,9 +248,6 @@ $(function () {
       nombreEditar: {
         required: true,
         minlength: 2,
-      },
-      apellidoEditar: {
-        required: true,
       },
       apellidoEditar: {
         required: true,
@@ -301,22 +296,22 @@ $(function () {
     },
 
     submitHandler: function (e) {
-      console.log("asdf");
       const dato = new FormData();
-      dato.append("nombre", $("#nombre").val());
-      dato.append("apellido", $("#apellido").val());
-      dato.append("idSexo", $("#sexo").val());
-      dato.append("idEstadoCivil", $("#estadoCivil").val());
-      dato.append("idTipoIdentificacion", $("#tipoIdentificacion").val());
-      dato.append("Identificacion", $("#identificacion").val());
-      dato.append("telefono", $("#telefono").val());
-      dato.append("celular", $("#celular").val());
-      dato.append("correo", $("#correo").val());
-      dato.append("fechaNacimiento", $("#fechaNacimiento").val());
-      dato.append("idCentro", $("#centro").val());
-      dato.append("idDepartamento", $("#departamento").val());
-      dato.append("idPuestoTrabajo", $("#puestoTrabajo").val());
-      dato.append("fechaIngreso", $("#fechaIngreso").val());
+      dato.append("idEmpleado", $("#idEmpleado").val());
+      dato.append("nombre", $("#nombreEditar").val());
+      dato.append("apellido", $("#apellidoEditar").val());
+      dato.append("idSexo", $("#sexoEditar").val());
+      dato.append("idEstadoCivil", $("#estadoCivilEditar").val());
+      dato.append("idTipoIdentificacion", $("#tipoIdentificacionEditar").val());
+      dato.append("Identificacion", $("#identificacionEditar").val());
+      dato.append("telefono", $("#telefonoEditar").val());
+      dato.append("celular", $("#celularEditar").val());
+      dato.append("correo", $("#correoEditar").val());
+      dato.append("fechaNacimiento", $("#fechaNacimientoEditar").val());
+      dato.append("idCentro", $("#centroEditar").val());
+      dato.append("idDepartamento", $("#departamentoEditar").val());
+      dato.append("idPuestoTrabajo", $("#puestoTrabajoEditar").val());
+      dato.append("fechaIngreso", $("#fechaIngresoEditar").val());
 
       $.ajax({
         url: "ajax/EmpleadoAjax.php",
@@ -327,22 +322,25 @@ $(function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
-          if (respuesta[0]["type"] == "sucessuly") {
-            Swal.fire("Ok!", "Se ha guardado correctamente!", "success");
+
+          if (respuesta.length > 0) {
+            Swal.fire("Ok!", "Se ha actualizado correctamente!", "success");
           }
+
           console.log(respuesta);
           $(".form-control").val("");
-          $("#close").click();
+          $("#closeEditar").click();
         },
       });
     },
   });
 });
 
-
-
 //EDITAR EMPLEADOS
 $("#empleados").on("click", ".btnEditEmployee", function () {
+
+  console.log($('.form-control').val());
+
   const idEmpleado = $(this).attr("idemployee");
 
   const data = new FormData();
@@ -358,16 +356,15 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
     dataType: "json",
     success: function (respuesta) {
 
-      console.log(respuesta);
+      $("#nombreP").text(respuesta["nombre"] + " " + respuesta["apellido"]);
+      $("#departamentoP").text(
+        (
+          respuesta["PuestoTrabajo"] +
+          " del departamento de " +
+          respuesta["Departamento"]
+        ).toUpperCase()
+      );
 
-      $("#nombreP").text(respuesta["nombre"] + ' ' + respuesta["apellido"]);
-      $("#correoP").text(respuesta["Correo"]);
-      $("#telefonoP").text(respuesta["telefono"]);
-      $("#celularP").text(respuesta["celular"]);
-      $("#departamentoP").text((respuesta["PuestoTrabajo"] + ' del departamento de ' + respuesta["Departamento"]).toUpperCase());
-
-
-      
       $("#idEmpleado").val(respuesta["idEmpleado"]);
       $("#nombreEditar").val(respuesta["nombre"]);
       $("#apellidoEditar").val(respuesta["apellido"]);

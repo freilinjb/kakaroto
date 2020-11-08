@@ -37,7 +37,14 @@ class EmpleadoAjax
         echo json_encode($respuesta);
     }
 
-    public function editarCliente() {
+    public function editarEmplado() {
+        $valor = $this->datosEmpleado;
+        $respuesta  = EmployeeModel::actualizarEmpleado($valor);
+
+        echo json_encode($respuesta);
+    }
+
+    public function consultarEmpleado() {
         $item = "idEmpleado";
         $valor = $this->idEmpleado;
 
@@ -61,6 +68,7 @@ if (isset($_POST["idSexo"]) && count($_POST) == 1) {
 CONSEGUIR LISTA DE PUESTOS DE TRABAJO POR DEPARTAMENTO
 =============================================*/ 
 if (isset($_POST["idDepartamento"]) && count($_POST) == 1) {
+    echo "asdf323adf323";
 
     $departamento = new EmpleadoAjax();
     $departamento->idDepartamento = $_POST["idDepartamento"];
@@ -68,7 +76,7 @@ if (isset($_POST["idDepartamento"]) && count($_POST) == 1) {
     
 } 
 
-if (isset($_POST["nombre"])) {
+if (isset($_POST["nombre"]) && !isset($_POST["idEmpleado"])) {
     $empleado = new EmpleadoAjax();
 
     $datos = array("nombre"=>$_POST["nombre"],
@@ -91,10 +99,35 @@ if (isset($_POST["nombre"])) {
 
 }
 
-if(isset($_POST['idEmpleado'])) {
+if(isset($_POST['idEmpleado']) && count($_POST) == 1) {
 
     $empleado = new EmpleadoAjax();
     $empleado->idEmpleado = $_POST['idEmpleado'];
-    $empleado->editarCliente();
+    $empleado->consultarEmpleado();
+    
+}
+
+
+if(isset($_POST['idEmpleado']) && count($_POST) > 1) {
+
+    $empleado = new EmpleadoAjax();
+    $datos = array("idEmpleado"=>$_POST["idEmpleado"],
+                                "nombre"=>$_POST["nombre"],
+                                "apellido"=>$_POST["apellido"],
+                                "idSexo"=>$_POST["idSexo"],
+                                "idEstadoCivil"=>$_POST["idEstadoCivil"],
+                                "idTipoIdentificacion"=>$_POST["idTipoIdentificacion"],
+                                "Identificacion"=>$_POST["Identificacion"],
+                                "telefono"=>$_POST["telefono"],
+                                "celular"=>$_POST["celular"],
+                                "correo"=>$_POST["correo"],
+                                "fechaNacimiento"=>$_POST["fechaNacimiento"],
+                                "idCentro"=>$_POST["idCentro"],
+                                "idDepartamento"=>$_POST["idDepartamento"],
+                                "idPuestoTrabajo"=>$_POST["idPuestoTrabajo"],
+                                "fechaIngreso"=>$_POST["fechaIngreso"]);
+
+    $empleado->datosEmpleado = $datos;
+    $empleado->editarEmplado();
     
 }
