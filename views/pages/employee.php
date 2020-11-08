@@ -71,10 +71,7 @@
                                     <td>' . $value["Centro"] . '</td>
                                     <td>' . $clase . '</td>
                                     <td>
-                                        <div class="btn-group">    
                                         <button class="btn btn-info btnEditEmployee" data-toggle="modal" data-target="#modalEditarEmpleado" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-eye"></i></button>
-                                        <button class="btn btn-danger btnDeleteEmployeee" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-trash"></i></button>
-                                        </div>  
                                     </td>
                                     </tr>';
                                 }

@@ -222,6 +222,8 @@ $(function () {
           if (respuesta[0]["type"] == "sucessuly") {
             Swal.fire("Ok!", "Se ha guardado correctamente!", "success");
           }
+
+          
           console.log(respuesta);
           $(".form-control").val("");
           $("#close").click();
@@ -230,6 +232,114 @@ $(function () {
     },
   });
 });
+
+
+$(function () {
+  $.validator.setDefaults({
+    submitHandler: function () {
+      alert("Form successful submitted!");
+    },
+  });
+
+  $("#formEmployeeEditar").validate({
+    rules: {
+      correoEditar: {
+        required: true,
+        email: true,
+      },
+      nombreEditar: {
+        required: true,
+        minlength: 2,
+      },
+      apellidoEditar: {
+        required: true,
+      },
+      apellidoEditar: {
+        required: true,
+      },
+      sexoEditar: {
+        required: true,
+      },
+      estadoCivilEditar: {
+        required: true,
+      },
+      tipoIdentificacionEditar: {
+        required: true,
+      },
+      identificacionEditar: {
+        required: true,
+      },
+      fechaNacimientoEditar: {
+        required: true,
+      },
+      puestoTrabajoEditar: {
+        required: true,
+      },
+      departamentoEditar: {
+        required: true,
+      },
+      centroEditar: {
+        required: true,
+      },
+      fechaIngresoEditar: {
+        required: true,
+      },
+    },
+    messages: {
+      terms: "Please accept our terms",
+    },
+    errorElement: "span",
+    errorPlacement: function (error, element) {
+      error.addClass("invalid-feedback");
+      element.closest(".form-group").append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass("is-invalid");
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass("is-invalid");
+    },
+
+    submitHandler: function (e) {
+      console.log("asdf");
+      const dato = new FormData();
+      dato.append("nombre", $("#nombre").val());
+      dato.append("apellido", $("#apellido").val());
+      dato.append("idSexo", $("#sexo").val());
+      dato.append("idEstadoCivil", $("#estadoCivil").val());
+      dato.append("idTipoIdentificacion", $("#tipoIdentificacion").val());
+      dato.append("Identificacion", $("#identificacion").val());
+      dato.append("telefono", $("#telefono").val());
+      dato.append("celular", $("#celular").val());
+      dato.append("correo", $("#correo").val());
+      dato.append("fechaNacimiento", $("#fechaNacimiento").val());
+      dato.append("idCentro", $("#centro").val());
+      dato.append("idDepartamento", $("#departamento").val());
+      dato.append("idPuestoTrabajo", $("#puestoTrabajo").val());
+      dato.append("fechaIngreso", $("#fechaIngreso").val());
+
+      $.ajax({
+        url: "ajax/EmpleadoAjax.php",
+        method: "POST",
+        data: dato,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+          if (respuesta[0]["type"] == "sucessuly") {
+            Swal.fire("Ok!", "Se ha guardado correctamente!", "success");
+          }
+          console.log(respuesta);
+          $(".form-control").val("");
+          $("#close").click();
+        },
+      });
+    },
+  });
+});
+
+
 
 //EDITAR EMPLEADOS
 $("#empleados").on("click", ".btnEditEmployee", function () {
@@ -264,7 +374,7 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
       $("#centroEditar").val(respuesta["idCentro"]);
       $("#departamentoEditar").val(respuesta["idDepartamento"]);
       $("#puestoTrabajoEditar").val(respuesta["idPuesto"]);
-      $("#fechaIngresoEditar").val(respuesta["fechaNacimiento"]);
+      $("#fechaIngresoEditar").val(respuesta["fechaIngreso"]);
 
       idPuesto = respuesta["idPuesto"];
 
@@ -272,31 +382,4 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
       document.getElementById("departamentoEditar").text = "newTextForApple";
     },
   });
-});
-
-$("#empleados").on("click", ".btnDeleteEmployeee", function () {
-  const idEmpleado = $(this).attr("idemployee");
-
-  const datos = new FormData();
-  datos.append("idEmpleado", idEmpleado);
-
-  $.ajax({
-    url: "ajax/EmpleadoAjax.php",
-    method: "POST",
-    data: datos,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function (respuesta) {
-      $("#idEmpleado").val(respuesta["id"]);
-      $("#nombreEditar").val(respuesta["nombre"]);
-      $("#apellidoEditar").val(respuesta["documento"]);
-      $("#editarFechaNacimiento").val(respuesta["fecha_nacimiento"]);
-
-      console.log(respuesta);
-    },
-  });
-
-  console.log("idEmpleado: ", idEmpleado);
 });

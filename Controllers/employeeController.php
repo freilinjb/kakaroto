@@ -21,7 +21,8 @@ class EmployeeController {
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["Identificacion"]) &&
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["celular"]) &&
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["correo"]) &&
-                preg_match('/^[-.\/-0-9]+$/', $_POST["fechaNacimiento"])){
+                preg_match('/^[-.\/-0-9]+$/', $_POST["fechaNacimiento"]) &&
+                preg_match('/^[-.\/-0-9]+$/', $_POST["fechaIngreso"])){
 
                 $datos = array("nombre"=>$_POST["nombre"],
                                 "apellido"=>$_POST["apellido"],
@@ -32,7 +33,8 @@ class EmployeeController {
                                 "telefono"=>$_POST["telefono"],
                                 "celular"=>$_POST["celular"],
                                 "correo"=>$_POST["correo"],
-                                "fechaNacimiento"=>$_POST["fechaNacimiento"]);
+                                "fechaNacimiento"=>$_POST["fechaNacimiento"],
+                                "fechaIngreso"=>$_POST["fechaIngreso"]);
 
                 
                                 print_r($datos);
