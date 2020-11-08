@@ -47,7 +47,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Admin Ventas
+                                    Admin Pedidos
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -55,19 +55,13 @@
                                 <li class="nav-item">
                                     <a href="../charts/chartjs.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
+                                        <p>Generar pedido</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../charts/flot.html" class="nav-link">
+                                    <a href="employee" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
+                                        <p>Registrar cliente</p>
                                     </a>
                                 </li>
                             </ul>
