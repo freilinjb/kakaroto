@@ -59,7 +59,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="employee" class="nav-link">
+                                    <a href="clientes" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Registrar cliente</p>
                                     </a>
@@ -164,7 +164,30 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-header">ASIGNACIONES Y PERMISOS</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    RR. HH
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="employee" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admin. Empleados</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../forms/advanced.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Asignar Modulo</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-header">CONTROLES DE ACCESO</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>

@@ -20,7 +20,7 @@ class EmployeeModel {
 
     static public function registrarEmpleado($datos) {
 
-        $request = Conection::connect()->prepare("CALL registrarEmpleado(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $request = Conection::connect()->prepare("CALL registrarEmpleado(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $request->bindParam("1", $datos["nombre"], PDO::PARAM_STR);
 		$request->bindParam("2", $datos["apellido"], PDO::PARAM_STR);
@@ -36,6 +36,7 @@ class EmployeeModel {
 		$request->bindParam("12", $datos["idPuestoTrabajo"], PDO::PARAM_INT);
 		$request->bindParam("13", $datos["fechaNacimiento"], PDO::PARAM_STR);
 		$request->bindParam("14", $datos["fechaIngreso"], PDO::PARAM_STR);
+		$request->bindParam("15", $datos["foto"], PDO::PARAM_STR);
         
         $request->execute();
 
@@ -44,7 +45,7 @@ class EmployeeModel {
 
     static public function actualizarEmpleado($datos) {
 
-        $request = Conection::connect()->prepare("CALL registrarEmpleado(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $request = Conection::connect()->prepare("CALL registrarEmpleado(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NULL)");
 
         $request->bindParam("1", $datos["idEmpleado"], PDO::PARAM_INT);
         $request->bindParam("2", $datos["nombre"], PDO::PARAM_STR);

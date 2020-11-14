@@ -102,7 +102,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Employee</h1>
+                <h1>Adminiscación de Clientes</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -125,13 +125,13 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-edit"></i>
-                            Toasts Examples <small>built in AdminLTE</small>
+                            Registro de Cliente
                         </h3>
                     </div>
                     <div class="card-body">
                         <div class="">
                             <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister">
-                                Employee
+                                Cliente
                             </button>
                         </div>
                         <table id="empleados" class="table table-bordered table-striped table-hover">
@@ -160,16 +160,9 @@
                                         $clase = "<span class='badge badge-success'>" . $value["Estado"] . "</span>";
                                     }
 
-                                    $foto = null;
-                                    if(strlen($value["foto_url"]) > 15) {
-                                        $foto = $value["foto_url"];
-                                    } else {
-                                        $foto = "views/assets/img/empleados/foto_perfil_hombre.jpg";
-                                    }
-
                                     echo '<tr>
                                     <td>' . ($key + 1) . '</td>
-                                    <td> <img src='.$foto.' alt="Product 1" class="img-circle img-size-32 mr-2">' . $value["nombre"] .' '. $value["apellido"] . '</td>
+                                    <td>' . $value["nombre"] . '</td>
                                     <td>' . $value["Correo"] . '</td>
                                     <td>' . $value["telefono"] . '</td>
                                     <td>' . $value["celular"] . '</td>
@@ -198,7 +191,7 @@
 <div class="modal fade" id="modalEmployeeRegister" style="display: none; padding-right: 17px;" aria-modal="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="formEmployee" enctype="multipart/form-data">
+            <form id="formEmployee">
                 <div class="modal-header bg-info">
                     <h4 class="modal-title">Register Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -324,7 +317,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="nuevaImagen" accept="image/x-png, image/gif, image/jpeg, image/jpg">
+                                            <input type="file" class="custom-file-input" id="nuevaImagen">
                                             <label class="custom-file-label" for="nuevaImagen">Eliga una foto</label>
                                         </div>
                                     </div>
@@ -400,14 +393,14 @@
             </div>
             <div class="modal-body">
                 <div class="col-12">
-                    <form id="formEmployeeEditar" enctype="multipart/form-data">
+                    <form id="formEmployeeEditar">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="profile-img">
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" width="150px" height="150px" class="img-thumbnail previsualizar" alt="">
                                     <div class="file btn btn-lg btn-primary">
                                         Cambiar foto
-                                        <input type="file" name="fotoEditar" class="nuevaImagen" name="nuevaImagen"  accept="image/x-png, image/gif, image/jpeg, image/jpg">
+                                        <input type="file" name="file" class="nuevaImagen" name="nuevaImagen">
                                     </div>
                                 </div>
                             </div>

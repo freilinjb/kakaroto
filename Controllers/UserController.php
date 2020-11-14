@@ -22,12 +22,18 @@ class UserController {
                     $_SESSION['idUsuario'] = $resquest["idUsuario"];
                     $_SESSION['nombre'] = true;
                     $_SESSION['usuario'] = $_POST["user"];
-                    echo "bien hecho";
+                    echo '<script>
+
+								window.location = "clientes";
+
+						</script>';
                     
                 } else {
 					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
                 }
             }
+        }else{
+            echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
         }
     }
 }

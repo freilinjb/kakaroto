@@ -193,8 +193,10 @@ $(function () {
     },
 
     submitHandler: function (e) {
-      console.log("asdf");
       const dato = new FormData();
+
+      dato.append("foto", $("#nuevaImagen")[0].files[0]);
+      
       dato.append("nombre", $("#nombre").val());
       dato.append("apellido", $("#apellido").val());
       dato.append("idSexo", $("#sexo").val());
@@ -297,6 +299,8 @@ $(function () {
 
     submitHandler: function (e) {
       const dato = new FormData();
+
+
       dato.append("idEmpleado", $("#idEmpleado").val());
       dato.append("nombre", $("#nombreEditar").val());
       dato.append("apellido", $("#apellidoEditar").val());
@@ -365,6 +369,12 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
         ).toUpperCase()
       );
 
+      if(respuesta["foto_url"]) {
+        $('.previsualizar').attr('src', respuesta["foto_url"])
+      } else {
+        $('.previsualizar').attr('src', "views/assets/img/empleados/foto_perfil_hombre.jpg");
+      }
+      
       $("#idEmpleado").val(respuesta["idEmpleado"]);
       $("#nombreEditar").val(respuesta["nombre"]);
       $("#apellidoEditar").val(respuesta["apellido"]);
@@ -383,3 +393,45 @@ $("#empleados").on("click", ".btnEditEmployee", function () {
     },
   });
 });
+
+
+/*=============================================
+SUBIENDO LA FOTO DEL PRODUCTO
+=============================================*/
+
+$(".nuevaImagen").change(function(){
+
+	var imagen = this.files[0];
+	
+	/*=============================================
+  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	=============================================*/
+  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+  		$(".nuevaImagen").val("");
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else if(imagen["size"] > 2000000){
+  		$(".nuevaImagen").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else{
+
+  		const datosImagen = new FileReader;
+  		datosImagen.readAsDataURL(imagen);
+  		$(datosImagen).on("load", function(event){
+  			var rutaImagen = event.target.result;
+  			$(".previsualizar").attr("src", rutaImagen);
+  		})
+  	}
+})
