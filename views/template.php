@@ -22,7 +22,6 @@ session_start();
 
                 include "pages/" . $_GET["route"] . ".php";
             } else {
-                echo "pages/" . $_GET["route"] . ".php";
                 include "pages/404.php";
             }
         } else {
