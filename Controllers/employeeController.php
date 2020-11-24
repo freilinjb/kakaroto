@@ -34,11 +34,7 @@ class EmployeeController {
                                 "celular"=>$_POST["celular"],
                                 "correo"=>$_POST["correo"],
                                 "fechaNacimiento"=>$_POST["fechaNacimiento"],
-                                "fechaIngreso"=>$_POST["fechaIngreso"]);
-
-                
-                                print_r($datos);
-                            
+                                "fechaIngreso"=>$_POST["fechaIngreso"]);         
             }
         }
     }

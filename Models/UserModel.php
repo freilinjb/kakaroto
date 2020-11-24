@@ -21,4 +21,19 @@ class UserModel {
 			return $data -> fetchAll();
         }
     }
+
+    static public function actualizarEmpleado($datos) {
+
+        $request = Conection::connect()->prepare("CALL registrarUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NULL)");
+
+        
+        $request->bindParam("1", $datos["idEmpleado"], PDO::PARAM_INT);
+        $request->bindParam("2", $datos["usuario"], PDO::PARAM_STR);
+		$request->bindParam("3", $datos["clave"], PDO::PARAM_STR);
+		$request->bindParam("4", $datos["idEstado"], PDO::PARAM_INT);
+        
+        $request->execute();
+
+        return $request-> fetchAll();
+    }
 }

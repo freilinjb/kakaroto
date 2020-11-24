@@ -36,4 +36,21 @@ class UserController {
             echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
         }
     }
+
+    static public function registrarUsuario() {
+
+        if(isset($_POST["nombre"])) {
+            if(
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["usuario"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["clave"]) &&
+                preg_match('/^[0-9]+$/', $_POST["idEmpleado"]) &&
+                preg_match('/^[0-9]+$/', $_POST["idEstado"])){
+
+                $datos = array("usuario"=>$_POST["usuario"],
+                                "clave"=>$_POST["clave"],
+                                "idEmpleado"=>$_POST["idEmpleado"],
+                                "idEstado"=>$_POST["idEstado"]);
+            }
+        }
+    }
 }

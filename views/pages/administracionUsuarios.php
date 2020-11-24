@@ -1,3 +1,6 @@
+<?php 
+    $employee = EmployeeController::showEmployee(null, null);
+?>
 <style>
     .btn-file:hover {
         cursor: pointer;
@@ -210,29 +213,14 @@
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-6-lg col-xl-6 col-sm-12">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Empleado</label>
-                                        <select class="form-control" name="empleado" id="empleado">
+                                        <select class="form-control select2bs4" name="idEmpleado" id="idEmpleado">
                                             <option value="" disabled selected>Seleccione una opción</option>
                                             <?php
-                                            $sexo = EmployeeController::listarSexo();
-                                            foreach ($sexo as $index => $valor) {
-                                                echo "<option value=" . $valor["idSexo"] . ">" . $valor["Sexo"] . "</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Rol</label>
-                                        <select class="form-control" name="rol" id="rol">
-                                            <option value="" disabled selected>Seleccione una opción</option>
-                                            <?php
-                                            $sexo = EmployeeController::listarSexo();
-                                            foreach ($sexo as $index => $valor) {
-                                                echo "<option value=" . $valor["idSexo"] . ">" . $valor["Sexo"] . "</option>";
+                                            foreach ($employee as $index => $valor) {
+                                                echo "<option value=" . $valor["idEmpleado"] . ">" . $valor["nombre"] . " " .$valor["apellido"] . "</option>";
                                             }
                                             ?>
                                         </select>
@@ -257,7 +245,7 @@
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        <select class="form-control" name="rol" id="rol">
+                                        <select class="form-control" name="idEstado" id="idEstado">
                                             <option value="" disabled selected>Seleccione una opción</option>
                                             <?php
                                             $sexo = EmployeeController::listarSexo();
@@ -500,6 +488,9 @@
                             <button type="button" class="btn btn-default" id="closeEditar" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-info">Save changes</button>
                         </div>
+                        <?php 
+                            
+                        ?>
                     </form>
                 </div>
             </div>
@@ -537,7 +528,12 @@
 <!-- sweetalert2-theme-bootstrap-4 -->
 <link rel="stylesheet" href="views/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
-<!-- Page specific script -->
+<!-- SELECT -->
+<link rel="stylesheet" href="views/assets/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="views/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Select2 -->
+<script src="views/assets/plugins/select2/js/select2.full.min.js"></script>
+
 <script>
     $(function() {
         $("#empleados").DataTable({
@@ -547,6 +543,11 @@
             "info": true,
             "paging": true,
             "pageLength": 7,
+        });
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
         });
     });
 </script>
