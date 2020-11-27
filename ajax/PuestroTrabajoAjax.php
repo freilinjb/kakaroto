@@ -20,9 +20,7 @@ class PuestroTrabajoAjax {
 CONSEGUIR LISTA DE SEXO
 =============================================*/	
 if(isset($_POST["idDepartamento"])){
-
 	$departamento = new PuestroTrabajoAjax();
 	$departamento -> idDepartamento = $_POST["idDepartamento"];
     $departamento -> listarPuestroTrabajo();
-
 }

@@ -181,7 +181,7 @@
                                     <td>' . $value["Centro"] . '</td>
                                     <td>' . $clase . '</td>
                                     <td>
-                                        <button class="btn btn-info btnEditEmployee" data-toggle="modal" data-target="#modalEditarEmpleado" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-eye"></i></button>
+                                        <button class="btn btn-info btnEditEmployee" data-toggle="modal" data-target="#modalEditarUsuario" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-eye"></i></button>
                                     </td>
                                     </tr>';
                                 }
@@ -201,7 +201,7 @@
 <div class="modal fade" id="modalEmployeeRegister" style="display: none; padding-right: 17px;" aria-modal="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="formEmployee" enctype="multipart/form-data">
+            <form id="formRegistrarUsuario" method="post">
                 <div class="modal-header bg-info">
                     <h4 class="modal-title">Register of users</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -264,6 +264,9 @@
                     <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-info">Save changes</button>
                 </div>
+                <?php 
+                    $usuarios = UserController::registrarUsuario();
+                ?>
             </form>
         </div>
         <!-- /.modal-content -->
@@ -274,7 +277,7 @@
 <!-- END MODAL REGISTRAR EMPLEADO-->
 
 <!-- MODAL REGISTRAR EDITAR-->
-<div class="modal fade" id="modalEditarEmpleado" style="display: none; padding-right: 17px;" aria-modal="true">
+<div class="modal fade" id="modalEditarUsuario" style="display: none; padding-right: 17px;" aria-modal="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info">
@@ -503,7 +506,7 @@
 <!-- END MODAL REGISTRAR EMPLEADO-->
 
 <!-- SCRIPT PERSONAL -->
-<script src="views/assets/js/empleado.js"></script>
+<script src="views/assets/js/administracionUsuarios.js"></script>
 <!-- DataTables  & Plugins -->
 
 <link rel="stylesheet" href="views/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">

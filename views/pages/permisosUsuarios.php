@@ -216,7 +216,7 @@
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Empleado</label>
-                                        <select class="form-control select2bs4" name="empleado" id="empleado">
+                                        <select class="form-control select2bs4" name="idEmpleado" id="idEmpleado">
                                             <option value="" disabled selected>Seleccione una opción</option>
                                             <?php
                                             foreach ($employee as $index => $valor) {
