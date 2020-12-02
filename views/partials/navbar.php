@@ -140,28 +140,13 @@
                     <p class="text-white">
                         <?php echo $_SESSION["nombre"] ." - ". $_SESSION["PuestoTrabajo"] ?>
                         <?php echo $_SESSION["ultimoAcceso"] != '' ? "</small>". $_SESSION["ultimoAcceso"] . "</small>" : "" ?>
-                        <small>Member since Nov. 2012</small>
                     </p>
                 </li>
-                <!-- Menu Body -->
-                <li class="user-body">
-                    <div class="row">
-                        <div class="col-4 text-center">
-                            <a href="#">Followers</a>
-                        </div>
-                        <div class="col-4 text-center">
-                            <a href="#">Sales</a>
-                        </div>
-                        <div class="col-4 text-center">
-                            <a href="#">Friends</a>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </li>
+               
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+                    <a href="#" class="btn btn-default btn-flat">Perfil de usuario</a>
+                    <a href="cerrarSesion" class="btn btn-default btn-flat float-right">Cerrar sesion</a>
                 </li>
             </ul>
         </li>

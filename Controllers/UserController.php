@@ -38,6 +38,13 @@ class UserController {
         }
     }
 
+    static public function mostrarUsuarios($item, $value) {
+        $table = "usuarios_v";
+        $request = UserModel::showUsers($table, $item, $value);
+
+        return $request;
+    }
+
     static public function registrarUsuario() {
 
         if(isset($_POST["usuario"])) {

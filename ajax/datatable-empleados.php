@@ -21,8 +21,6 @@ class TablaEmpleados
             $datosJson = '{
                 "data": [';
     
-            $length = count($empleados);
-    
             foreach($empleados as $index => $key) {
                 $estado = null;
                 if ($key["Estado"] == "activo") {
@@ -31,13 +29,15 @@ class TablaEmpleados
 
                $botones = "<button class='btn btn-info btnEditEmployee' data-toggle='modal' data-target='#modalEditarEmpleado' idEmployee='" . $key["idEmpleado"] . "'><i class='fas fa-eye'></i></button>";
                
-               $foto = null;
-
+               //$foto = $key["foto_url"];
+                $foto = null;
                if(strlen($key["foto_url"]) > 10) {
-                   $foto ="<img src='".$key["foto_url"]."'  class='img-circle img-size-32 mr-2'>";
+                   $foto_temp = str_replace($key["foto_url"],'',"");
+                   $foto ="<img src='". $foto_temp. "'  class='img-circle img-size-32 mr-2'>";
                } else {
                    $foto ="<img src='views/assets/img/empleados/foto_perfil_hombre.jpg' class='img-circle img-size-32 mr-2'>";
                }
+
 
                 $datosJson .= '[
                     "'.($index+1).'",
@@ -89,7 +89,9 @@ class TablaEmpleados
             $datosJson .= ']
                 }';
               
+
             echo $datosJson;
+            //echo json_encode($empleados);
     }
 }
 

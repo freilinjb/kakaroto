@@ -306,10 +306,7 @@ $(function () {
         dato.append("apellido", $("#apellidoEditar").val());
         dato.append("idSexo", $("#sexoEditar").val());
         dato.append("idEstadoCivil", $("#estadoCivilEditar").val());
-        dato.append(
-          "idTipoIdentificacion",
-          $("#tipoIdentificacionEditar").val()
-        );
+        dato.append("idTipoIdentificacion", $("#tipoIdentificacionEditar").val());
         dato.append("Identificacion", $("#identificacionEditar").val());
         dato.append("telefono", $("#telefonoEditar").val());
         dato.append("celular", $("#celularEditar").val());
@@ -329,6 +326,9 @@ $(function () {
           processData: false,
           dataType: "json",
           success: function (respuesta) {
+            
+            console.log(respuesta);
+
             if (respuesta.length > 0) {
               Swal.fire("Ok!", "Se ha actualizado correctamente!", "success")
               .then((result) => {

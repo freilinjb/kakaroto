@@ -115,9 +115,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../../index.html" class="nav-link">
+                                    <a href="administracionProducto" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
+                                        <p>Administración de producto</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -209,43 +209,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-header">REPORTES</li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.0/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Ventas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.0/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Compras</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.0/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Produccion</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.0/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Operaciones </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.0/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Inventario </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.0/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Ordenes de producción </p>
-                            </a>
                         </li>
                     </ul>
                 </nav>

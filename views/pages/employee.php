@@ -150,6 +150,44 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <?php
+
+                                $employee = EmployeeController::showEmployee(null, null);
+                                $clase = null;
+                                foreach ($employee as $key => $value) {
+
+                                    $foto = null;
+
+                                    if(strlen($value["foto_url"]) > 10) {
+                                        $foto_temp = str_replace($value["foto_url"],'',"");
+                                        $foto ="<img src='". $value["foto_url"]. "'  class='img-circle img-size-32 mr-2'>";
+
+                                    } else {
+                                        $foto ="<img src='views/assets/img/empleados/hombre.png' class='img-circle img-size-32 mr-2'>";
+                                    }
+                     
+                                    if ($value["Estado"] == "activo") {
+                                        $clase = "<span class='badge badge-success'>" . $value["Estado"] . "</span>";
+                                    }
+
+                                    echo '<tr>
+                                    <td>' . ($key + 1) . '</td>
+                                    <td>' . $foto . $value["nombre"] .' '. $value["apellido"] . '</td>
+                                    <td>' . $value["Correo"] . '</td>
+                                    <td>' . $value["telefono"] . '</td>
+                                    <td>' . $value["celular"] . '</td>
+                                    <td>' . $value["PuestoTrabajo"] . '</td>
+                                    <td>' . $value["Departamento"] . '</td>             
+                                    <td>' . $value["Centro"] . '</td>
+                                    <td>' . $clase . '</td>
+                                    <td>
+                                        <button class="btn btn-info btnEditEmployee" data-toggle="modal" data-target="#modalEditarEmpleado" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-eye"></i></button>
+                                    </td>
+                                    </tr>';
+                                }
+                                ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -620,8 +658,8 @@
             "info": true,
             "paging": true,
             "pageLength": 7,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-            "ajax": "ajax/datatable-empleados.php"
+           // "ajax": "ajax/datatable-empleados.php"
+           "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#empleados_wrapper  .col-md-6:eq(0)');
     });
 </script>
