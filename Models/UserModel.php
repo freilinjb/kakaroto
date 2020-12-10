@@ -29,10 +29,10 @@ class UserModel {
             $request = Conection::connect()->prepare("CALL registrarUsuario(?,?,?,?,?)");
 
             $request->bindParam("1", $datos["idUsuario"], PDO::PARAM_INT);
-            $request->bindParam("1", $datos["idEmpleado"], PDO::PARAM_INT);
-            $request->bindParam("2", $datos["usuario"], PDO::PARAM_STR);
-            $request->bindParam("3", $datos["clave"], PDO::PARAM_STR);
-            $request->bindParam("4", $datos["idEstado"], PDO::PARAM_INT);
+            $request->bindParam("2", $datos["idEmpleado"], PDO::PARAM_INT);
+            $request->bindParam("3", $datos["usuario"], PDO::PARAM_STR);
+            $request->bindParam("4", $datos["clave"], PDO::PARAM_STR);
+            $request->bindParam("5", $datos["idEstado"], PDO::PARAM_INT);
 
         } else {
             $request = Conection::connect()->prepare("CALL registrarUsuario(NULL,?,?,?,?)");

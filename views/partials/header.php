@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="views/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="views/assets/dist/css/adminlte.min.css">
+    <!-- STYLE PERSONAL -->
+    <link rel="stylesheet" href="views/assets/css/style.css">
 </head>
 
 

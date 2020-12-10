@@ -14,7 +14,9 @@ class UserController {
                 $value = $_POST["user"];
 
                 $resquest = UserModel::showUsers($table, $item, $value);
-                
+
+                // print_r($resquest);
+
                 if($resquest["usuario"] == $_POST["user"] && $resquest["clave"] == $_POST["password"]) {
 
                     $_SESSION['iniciarSesion'] = true;
@@ -48,8 +50,6 @@ class UserController {
     static public function registrarUsuario() {
 
         if(isset($_POST["usuario"])) {
-            print "fasdfa";
-            print_r($_POST);
 
             if(
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["usuario"]) &&

@@ -23,6 +23,9 @@ class UsuariosAjax {
             "clave" => $_POST["clave"],
             "idEstado" => $_POST["idEstado"]);
 
+        print_r($_POST);
+        print_r($_FILES);
+
         $respuesta  = UserModel::registrarUsuario($datos);
         
         echo json_encode($respuesta);

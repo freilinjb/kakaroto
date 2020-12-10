@@ -5,17 +5,21 @@
 class EmployeeModel {
 
     static public function showEmployee($table, $item, $value) {
+        $data = null;
         if($item != null) {
 			$data = Conection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item");
             $data -> bindParam(":".$item, $value, PDO::PARAM_STR);
             $data -> execute();
-			return $data -> fetch();
+            return $data -> fetch();
+            
 
 		} else {
 			$data = Conection::connect()->prepare("SELECT * FROM $table");
             $data -> execute();
+            
 			return $data -> fetchAll();
-		}
+        }
+		$data = null;
     }
 
     static public function registrarEmpleado($datos) {
