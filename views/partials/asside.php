@@ -9,7 +9,7 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user (optional) -->
-                
+
 
                 <!-- SidebarSearch Form -->
                 <!-- <div class="form-inline">
@@ -167,7 +167,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="employee" class="nav-link">
+                                    <a href="index.php?route=employee" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Admin. Empleados</p>
                                     </a>

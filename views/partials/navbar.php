@@ -114,35 +114,34 @@
         </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <?php 
-                    if($_SESSION["foto_url"] != ""){
-                        echo "<img src='".$_SESSION["foto_url"]."' class='user-image img-circle elevation-2' alt='User Image'";
-                    } else {
-                        echo "<img src='views/assets/img/empleados/foto_perfil_hombre.jpg' class='img-circle elevation-2' alt='User Image'>";
-                    }
+                <?php
+                if ($_SESSION["foto_url"] != "") {
+                    echo "<img src='" . $_SESSION["foto_url"] . "' class='user-image img-circle elevation-2' alt='User Image'";
+                } else {
+                    // echo "<img src='views/assets/img/empleados/foto_perfil_hombre.jpg' class='img-circle elevation-2' alt='User Image'>";
+                }
 
-                    if($_SESSION["nombre"] != "") {
-                        echo "<span class='d-none d-md-inline'>".$_SESSION["nombre"]."</span>";
-
-                    }
+                if ($_SESSION["nombre"] != "") {
+                    echo "<span class='d-none d-md-inline'>" . $_SESSION["nombre"] . "</span>";
+                }
                 ?>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                 <!-- User image -->
                 <li class="user-header sidebar-dark-primary ">
-                    <?php 
-                        if($_SESSION["foto_url"] != ""){
-                            echo "<img src='".$_SESSION["foto_url"]."' class='img-circle elevation-2' alt='User Image'>";
-                        } else {
-                            echo "<img src='views/assets/img/empleados/foto_perfil_hombre.jpg' class='img-circle elevation-2' alt='User Image'>";
-                        }
+                    <?php
+                    if ($_SESSION["foto_url"] != "") {
+                        echo "<img src='" . $_SESSION["foto_url"] . "' class='img-circle elevation-2' alt='User Image'>";
+                    } else {
+                        echo "<img src='views/assets/img/empleados/foto_perfil_hombre.jpg' class='img-circle elevation-2' alt='User Image'>";
+                    }
                     ?>
                     <p class="text-white">
-                        <?php echo $_SESSION["nombre"] ." - ". $_SESSION["PuestoTrabajo"] ?>
-                        <?php echo $_SESSION["ultimoAcceso"] != '' ? "</small>". $_SESSION["ultimoAcceso"] . "</small>" : "" ?>
+                        <?php echo $_SESSION["nombre"] . " - " . $_SESSION["PuestoTrabajo"] ?>
+                        <?php echo $_SESSION["ultimoAcceso"] != '' ? "</small>" . $_SESSION["ultimoAcceso"] . "</small>" : "" ?>
                     </p>
                 </li>
-               
+
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     <a href="#" class="btn btn-default btn-flat">Perfil de usuario</a>
