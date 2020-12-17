@@ -89,6 +89,10 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Administración de producto</p>
                                     </a>
+                                    <a href="estandar" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Administración de estandares</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -130,10 +134,16 @@
                                         <p>Admin. Empleados</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="../forms/advanced.html" class="nav-link">
+                                <li class="modulos">
+                                    <a href="modulos" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Asignar Modulo</p>
+                                    </a>
+                                </li>
+                                <li class="modulos">
+                                    <a href="operaciones" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Asignar Operaciones</p>
                                     </a>
                                 </li>
                             </ul>

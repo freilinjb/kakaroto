@@ -69,9 +69,9 @@
                                     <td>' . $estado . '</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-info btnEditarOperacion" data-toggle="modal" data-target="#editarOperacion" idOperacion="' . $value["idOperacionFabricaicon"] . '"><i class="fas fa-eye"></i></button>
-                                            <button type="button" class="btn btn-light btnDesactivarOperacion" data-target="#editarOperacion" idOperacion="' . $value["idOperacionFabricaicon"] . '"><i class="fas fa-edit"></i></button>
-                                            <button type="button" class="btn btn-dark btnEliminarOperacion" data-target="#editarOperacion" idOperacion="' . $value["idOperacionFabricaicon"] . '"><i class="fas fa-trash"></i></button>
+                                            <button type="button" class="btn btn-info btnEditarOperacion" data-toggle="modal" data-target="#editarOperacion" idOperacion="' . $value["idOperacion"] . '"><i class="fas fa-eye"></i></button>
+                                            <button type="button" class="btn btn-light btnDesactivarOperacion" data-target="#editarOperacion" idOperacion="' . $value["idOperacion"] . '"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-dark btnEliminarOperacion" data-target="#editarOperacion" idOperacion="' . $value["idOperacion"] . '"><i class="fas fa-trash"></i></button>
                                         </div>
 
                                     </td>
