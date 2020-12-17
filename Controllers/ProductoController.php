@@ -93,7 +93,7 @@ class ProductoController
                         text: "El producto ha sido borrado correctamente!"
                       }).then(function(result) {
                                 if (result.value) {
-                                    window.location = "administracionProductos";
+                                    window.location = "index.php?route=administracionProductos";
                                 }
                             });
                 });

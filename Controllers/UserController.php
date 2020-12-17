@@ -1,14 +1,18 @@
-<?php 
+<?php
 
-class UserController {
+class UserController
+{
 
-    static public function login() {
+    static public function login()
+    {
 
-        if(isset($_POST["user"]) && !empty($_POST["user"])) {
+        if (isset($_POST["user"]) && !empty($_POST["user"])) {
 
-			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["user"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])){
-                
+            if (
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["user"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])
+            ) {
+
                 $table = "usuarios_v";
                 $item = "usuario";
                 $value = $_POST["user"];
@@ -17,7 +21,7 @@ class UserController {
 
                 // print_r($resquest);
 
-                if($resquest["usuario"] == $_POST["user"] && $resquest["clave"] == $_POST["password"]) {
+                if ($resquest["usuario"] == $_POST["user"] && $resquest["clave"] == $_POST["password"]) {
 
                     $_SESSION['iniciarSesion'] = true;
                     $_SESSION['idUsuario'] = $resquest["idUsuario"];
@@ -29,43 +33,47 @@ class UserController {
                     $_SESSION['ultimoAcceso'] = $resquest["ultimoAcceso"];
                     echo '<script>
 
-								window.location = "clientes";
+								window.location = "index.php?route=clientes";
 
 						</script>';
-                    
                 } else {
-					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
+                    echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
                 }
             }
         }
     }
 
-    static public function mostrarUsuarios($item, $value) {
+    static public function mostrarUsuarios($item, $value)
+    {
         $table = "usuarios_v";
         $request = UserModel::showUsers($table, $item, $value);
 
         return $request;
     }
 
-    static public function registrarUsuario() {
+    static public function registrarUsuario()
+    {
 
-        if(isset($_POST["usuario"])) {
+        if (isset($_POST["usuario"])) {
 
-            if(
+            if (
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["usuario"]) &&
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["clave"]) &&
                 preg_match('/^[0-9]+$/', $_POST["idEmpleado"]) &&
-                preg_match('/^[0-9]+$/', $_POST["idEstado"])) {
-    
-                $datos = array("usuario"=>$_POST["usuario"],
-                                "clave"=>$_POST["clave"],
-                                "idEmpleado"=>$_POST["idEmpleado"],
-                                "idEstado"=>$_POST["idEstado"]);
-                
+                preg_match('/^[0-9]+$/', $_POST["idEstado"])
+            ) {
+
+                $datos = array(
+                    "usuario" => $_POST["usuario"],
+                    "clave" => $_POST["clave"],
+                    "idEmpleado" => $_POST["idEmpleado"],
+                    "idEstado" => $_POST["idEstado"]
+                );
+
                 $respuesta = UserModel::registrarUsuario($datos);
 
-                if($respuesta == "ok"){
-                    echo'<script>
+                if ($respuesta == "ok") {
+                    echo '<script>
                         swal({
                             type: "success",
                             title: "La categoría ha sido guardada correctamente",
@@ -78,9 +86,8 @@ class UserController {
                                 }
                             })
                         </script>';
-                } 
-                else {
-                    echo'<script>
+                } else {
+                    echo '<script>
                         swal({
                                 type: "error",
                                 title: "¡La categoría no puede ir vacía o llevar caracteres especiales!",
@@ -93,7 +100,7 @@ class UserController {
                                 } 
                         })
                             </script>';
-                    }
+                }
             }
         }
     }
