@@ -129,11 +129,9 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="">
-                            <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister">
-                                Cliente
-                            </button>
-                        </div>
+                        <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister">
+                            Cliente
+                        </button>
                         <table id="empleados" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
@@ -407,7 +405,7 @@
                             <div class="col-md-6">
                                 <div class="profile-head">
                                     <h2 id="nombreP">
-                                        Kshiti Ghelani
+                                        Crack
                                     </h2>
                                     <h6 id="departamentoP">
                                         Web Developer and Designer

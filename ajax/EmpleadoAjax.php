@@ -33,6 +33,27 @@ class EmpleadoAjax
     public function registrarEmpleado()
     {
         $valor = $this->datosEmpleado;
+        $empleado = new EmpleadoAjax();
+
+    $datos = array(
+        "nombre" => $_POST["nombre"],
+        "apellido" => $_POST["apellido"],
+        "idSexo" => $_POST["idSexo"],
+        "idEstadoCivil" => $_POST["idEstadoCivil"],
+        "idTipoIdentificacion" => $_POST["idTipoIdentificacion"],
+        "Identificacion" => $_POST["Identificacion"],
+        "telefono" => $_POST["telefono"],
+        "celular" => $_POST["celular"],
+        "correo" => $_POST["correo"],
+        "fechaNacimiento" => $_POST["fechaNacimiento"],
+        "idCentro" => $_POST["idCentro"],
+        "idDepartamento" => $_POST["idDepartamento"],
+        "idPuestoTrabajo" => $_POST["idPuestoTrabajo"],
+        "fechaIngreso" => $_POST["fechaIngreso"],
+        );
+
+        // $empleado->datosEmpleado = $datos;
+        // $empleado->registrarEmpleado();
         $respuesta  = EmployeeModel::registrarEmpleado($valor);
 
         echo json_encode($respuesta);
@@ -57,150 +78,22 @@ class EmpleadoAjax
     }
 }
 
-/*=============================================
-CONSEGUIR LISTA DE ESTADOS CIVILES POR SEXO
-=============================================*/
-if (isset($_POST["idSexo"]) && count($_POST) == 1) {
 
-    $categoria = new EmpleadoAjax();
-    $categoria->idSexo = $_POST["idSexo"];
-    $categoria->listarEstadosCiviles();
-}
 
 /*=============================================
-CONSEGUIR LISTA DE PUESTOS DE TRABAJO POR DEPARTAMENTO
-=============================================*/
-if (isset($_POST["idDepartamento"]) && count($_POST) == 1) {
+Comprobamos que el valor no venga vacío
+=============================================*/	
+if(isset($_POST['exec']) && !empty($_POST['exec'])) {
+    $funcion = $_POST['exec'];
+    $ejecutar = new EmpleadoAjax();
+    //En función del parámetro que nos llegue ejecutamos una función u otra
+    switch($funcion) {
 
-    $departamento = new EmpleadoAjax();
-    $departamento->idDepartamento = $_POST["idDepartamento"];
-    $departamento->listarPuestroTrabajo();
-}
-
-//REGISTRAR EMPLEADO
-if (isset($_POST["nombre"]) && !isset($_POST["idEmpleado"])) {
-
-
-    if (isset($_FILES['foto']['tmp_name']) && !empty($_FILES['foto']['tmp_name'])) {
-        //echo $_FILES['foto']['tmp_name'] . " HOLA ";
-        //Crear nuevo array
-        list($ancho, $alto) = getimagesize($_FILES['foto']['tmp_name']);
-        //Redimencionar
-        $nuevoAncho = 500;
-        $nuevoAlto = 500;
-
-        $directorio = '../views/assets/img/empleados/' . trim($_POST["Identificacion"]);
-
-        /**
-         * PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN EL DB
-         */
-        //0755 permiso de lectura y estricura
-        //echo $directorio;
-        mkdir($directorio, 0777, true);
-
-        /*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
-
-        if ($_FILES["foto"]["type"] == "image/jpeg") {
-
-            /*=============================================
-			GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-			=============================================*/
-
-            $aleatorio = mt_rand(100, 999);
-
-            $ruta = "../views/assets/img/empleados/" . $_POST["Identificacion"] . "/" . $aleatorio . ".jpg";
-
-            $origen = imagecreatefromjpeg($_FILES["foto"]["tmp_name"]);
-
-            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-            imagejpeg($destino, $ruta);
-
-            $ruta = "views/assets/img/empleados/" . $_POST["Identificacion"] . "/" . $aleatorio . ".jpg";
-
-        }
-
-        if($_FILES["foto"]["type"] == "image/png"){
-
-            /*=============================================
-            GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-            =============================================*/
-
-            $aleatorio = mt_rand(100,999);
-
-            $ruta = "../views/assets/img/empleados/".$_POST["Identificacion"]."/".$aleatorio.".png";
-
-            $origen = imagecreatefrompng($_FILES["foto"]["tmp_name"]);						
-
-            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-            imagepng($destino, $ruta);
-
-            $ruta = "/views/assets/img/empleados/".$_POST["Identificacion"]."/".$aleatorio.".png";
-
-
-        }
+        case 'registrarEmpleado': 
+            $ejecutar -> registrarEmpleado();
+            break;
+        case 'funcion2': 
+            $b -> accion2();
+            break;
     }
-
-    $empleado = new EmpleadoAjax();
-
-    $datos = array(
-        "nombre" => $_POST["nombre"],
-        "apellido" => $_POST["apellido"],
-        "idSexo" => $_POST["idSexo"],
-        "idEstadoCivil" => $_POST["idEstadoCivil"],
-        "idTipoIdentificacion" => $_POST["idTipoIdentificacion"],
-        "Identificacion" => $_POST["Identificacion"],
-        "telefono" => $_POST["telefono"],
-        "celular" => $_POST["celular"],
-        "correo" => $_POST["correo"],
-        "fechaNacimiento" => $_POST["fechaNacimiento"],
-        "idCentro" => $_POST["idCentro"],
-        "idDepartamento" => $_POST["idDepartamento"],
-        "idPuestoTrabajo" => $_POST["idPuestoTrabajo"],
-        "fechaIngreso" => $_POST["fechaIngreso"],
-        "foto" => $ruta
-    );
-
-    $empleado->datosEmpleado = $datos;
-    $empleado->registrarEmpleado();
-}
-
-if (isset($_POST['idEmpleado']) && count($_POST) == 1) {
-
-    $empleado = new EmpleadoAjax();
-    $empleado->idEmpleado = $_POST['idEmpleado'];
-    $empleado->consultarEmpleado();
-}
-
-//EDITAR EMPLEADO
-if (isset($_POST['idEmpleado']) && count($_POST) > 1) {
-
-    $empleado = new EmpleadoAjax();
-    $datos = array(
-        "idEmpleado" => $_POST["idEmpleado"],
-        "nombre" => $_POST["nombre"],
-        "apellido" => $_POST["apellido"],
-        "idSexo" => $_POST["idSexo"],
-        "idEstadoCivil" => $_POST["idEstadoCivil"],
-        "idTipoIdentificacion" => $_POST["idTipoIdentificacion"],
-        "Identificacion" => $_POST["Identificacion"],
-        "telefono" => $_POST["telefono"],
-        "celular" => $_POST["celular"],
-        "correo" => $_POST["correo"],
-        "fechaNacimiento" => $_POST["fechaNacimiento"],
-        "idCentro" => $_POST["idCentro"],
-        "idDepartamento" => $_POST["idDepartamento"],
-        "idPuestoTrabajo" => $_POST["idPuestoTrabajo"],
-        "fechaIngreso" => $_POST["fechaIngreso"]
-    );
-
-    $empleado->datosEmpleado = $datos;
-    $empleado->editarEmplado();
 }

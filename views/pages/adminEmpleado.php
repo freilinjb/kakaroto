@@ -36,8 +36,8 @@
                     </div>
                     <div class="card-body">
                         <div class="">
-                            <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister">
-                                 + Empleado
+                            <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister" id="registroCliente">
+                                 <strong> + </strong> Empleado
                             </button>
                         </div>
                         <table id="empleados" class="table table-bordered table-striped table-hover">
@@ -113,7 +113,7 @@
                                     <div class="form-group">
                                         <label>Nombre</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre" autocomplete="off">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="crack2" placeholder="Ingrese el nombre" autocomplete="off">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -123,7 +123,7 @@
                                     <div class="form-group">
                                         <label>Apellido</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido" autocomplete="off">
+                                            <input type="text" class="form-control" name="apellido" id="apellido" value="crack2" placeholder="Ingrese el apellido" autocomplete="off">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -143,7 +143,7 @@
                                     <div class="form-group">
                                         <label>Identificacion</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" name="identificacion" id="identificacion" placeholder="Ingrese el numero de ducumento" autocomplete="off">
+                                            <input type="text" class="form-control" name="identificacion" id="identificacion" value="03105697175" placeholder="Ingrese el numero de ducumento" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="usuario" id="usuario" autocomplete="off" placeholder="Ingrese el nobre de usuario">
+                                            <input type="text" class="form-control" name="usuario" id="usuario" autocomplete="off" value="frack" placeholder="Ingrese el nobre de usuario">
                                         </div>
                                     </div>
                                 </div>
@@ -165,15 +165,15 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="clave" id="clave" autocomplete="off" placeholder="Ingrese la contraseña">
+                                            <input type="text" class="form-control" name="clave" id="clave" autocomplete="off" value="1423" placeholder="Ingrese la contraseña">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <div class="form-group">
                                     <label for="tipoUsuario">Tipo de usuario</label>
-                                    <select id="tipoUsuario" class="form-control" name="tipoUsuario" required>
-                                        <option>Seleccione una opción</option>
+                                    <select class="form-control" name="tipoUsuario" id="tipoUsuario" required>
+                                        <option value="" disabled selected>Seleccione una opción</option>
                                         <?php foreach ($tipoUsuario as $key) {
                                         echo '<option value="' . $key['idTipo'] . '">' . $key['descriccion'] . '</option>';
                                         }  ?>
@@ -187,7 +187,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="telefono" id="telefono" autocomplete="off">
+                                            <input type="text" class="form-control" name="telefono" id="telefono" value="849-565-2312" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                             </div>
-                                            <input type="email" class="form-control" name="correo" id="correo" autocomplete="off">
+                                            <input type="email" class="form-control" name="correo" id="correo" value="fras@fsd.com" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                             </div>
-                                            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
+                                            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" value="11/11/1995">
                                         </div>
                                     </div>
                                 </div>
