@@ -50,7 +50,6 @@ $productos = ProductoController::getProductos(null, null);
                   <th>Dimencion</th>
                   <th>TIpo</th>
                   <th>Sub tipo</th>
-                  <th>tiempo de desarrollo</th>
                   <th>provedor</th>
                   <th>Creacion</th>
                   <th>Action</th>

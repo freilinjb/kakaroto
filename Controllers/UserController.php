@@ -6,31 +6,31 @@ class UserController
     static public function login()
     {
 
-        if (isset($_POST["user"]) && !empty($_POST["user"])) {
+        if (isset($_POST["usuario"]) && !empty($_POST["usuario"])) {
 
             if (
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["user"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuario"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["clave"])
             ) {
 
-                $table = "usuarios_v";
-                $item = "usuario";
-                $value = $_POST["user"];
+                $table = "user";
+                $item = "user";
+                $value = $_POST["usuario"];
 
-                $resquest = UserModel::showUsers($table, $item, $value);
+                $resquest = UserModel::showUsers($item, $value);
 
                 // print_r($resquest);
+                // print_r($_POST);
+                // die;
 
-                if ($resquest["usuario"] == $_POST["user"] && $resquest["clave"] == $_POST["password"]) {
+                if ($resquest["user"] == $_POST["usuario"] && $resquest["clave"] == $_POST["clave"]) {
 
                     $_SESSION['iniciarSesion'] = true;
-                    $_SESSION['idUsuario'] = $resquest["idUsuario"];
+                    $_SESSION['idUser'] = $resquest["idUser"];
                     $_SESSION['nombre'] =  $resquest["nombre"];;
-                    $_SESSION['usuario'] = $_POST["user"];
-                    $_SESSION['foto_url'] = $resquest["foto_url"];
-                    $_SESSION['Departamento'] = $resquest["Departamento"];
-                    $_SESSION['PuestoTrabajo'] = $resquest["PuestoTrabajo"];
-                    $_SESSION['ultimoAcceso'] = $resquest["ultimoAcceso"];
+                    $_SESSION['user'] = $_POST["usuario"];
+                    $_SESSION['nombre'] = $resquest["nombre"];
+                    $_SESSION['tipoUsuario'] = $resquest["tipoUsuario"];
                     echo '<script>
 
 								window.location = "index.php?route=clientes";

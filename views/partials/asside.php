@@ -47,15 +47,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../charts/chartjs.html" class="nav-link">
+                                    <a href="administracionUsuarios" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Generar pedido</p>
+                                        <p>Adm. de usuarios</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="clientes" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Registrar cliente</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="employee" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admin. de empleados</p>
                                     </a>
                                 </li>
                             </ul>
@@ -93,7 +99,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="desarrolloProducto" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Desarrollo de producto
@@ -104,11 +110,15 @@
                                 <li class="nav-item">
                                     <a href="administracionProductos" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Administración de producto</p>
+                                        <p>Registro Producto</p>
                                     </a>
                                     <a href="estandar" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Administración de estandares</p>
+                                        <p>Estandares</p>
+                                    </a>
+                                    <a href="desarrolloProducto" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Des. Producto</p>
                                     </a>
                                 </li>
                             </ul>
