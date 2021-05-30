@@ -23,12 +23,19 @@ class EmpleadoModel
 
     static public function registrarEmpleado($datos)
     {
-      if (isset($datos->idEmpleado) && $datos->idempleado > 0) { /// NUEVO EMPLEADO
+
+      // if(isset($datos["idEmpleado"]) && $datos["idEmpleado"] > 0) {
+      //   echo "existe";
+      // } else {
+      //   echo "no existe";
+      // }
+      // print_r($_POST);die;
+      if (isset($datos["idEmpleado"]) && $datos["idEmpleado"] > 0) { /// NUEVO EMPLEADO
         $respuesta = Conection::connect()->prepare("CALL registrarEmpleado (?,?,?,?,?,?,?,?,?,?,?,?)");
         $respuesta->bindParam("1", $datos["idEmpleado"], PDO::PARAM_INT);
         $respuesta->bindParam("2", $datos["nombre"], PDO::PARAM_STR);
         $respuesta->bindParam("3", $datos["apellido"], PDO::PARAM_STR);
-        $respuesta->bindParam("4", $datos["idSexo"], PDO::PARAM_INT);
+        $respuesta->bindParam("4", $datos["sexo"], PDO::PARAM_INT);
         $respuesta->bindParam("5", $datos["identifcacion"], PDO::PARAM_STR);
         $respuesta->bindParam("6", $datos["fechaNacimiento"], PDO::PARAM_STR);
         $respuesta->bindParam("7", $datos["usuario"], PDO::PARAM_STR);
@@ -105,4 +112,47 @@ class EmpleadoModel
       return $data->fetchAll();
     }
   }
+
+  
+  static public function getEmpleado($ID) {
+    // echo "hola prueba";die;
+    $data = Conection::connect()->prepare("SELECT 
+                    p.idTercero,
+                    u.idEmpleado,
+                    u.user AS usuario, 
+                    u.clave,
+                    tg.idTipo AS idTipoUsuario,
+                    tg.descriccion AS tipoUsuario, 
+                    p.nombre, 
+                    p.apellido, 
+                    s.idSexo,
+                    s.sexo, 
+                    p.identificacion,
+                    e.estado,
+                      COALESCE((SELECT t.descripcion AS telefono 
+                      FROM telefono t INNER JOIN tercero_telefono tt ON t.idTelefono = tt.idTelefono WHERE p.idTercero = tt.idTercero),null) AS telefono,
+                      COALESCE((SELECT c.descripcion AS correo 
+                      FROM correo c INNER JOIN tercero_correo tc ON tc.idCorreo= c.idCorreo WHERE p.idTercero = tc.idTercero),null) AS correo,
+                    p.fechaNaci AS fechaNacimiento
+                  FROM user u 
+                  INNER JOIN tipo_general tg ON tg.idTipo = u.idTipoUser
+                  INNER JOIN empleado e ON e.idEmpreado = u.idEmpleado
+                  INNER JOIN persona p ON p.idPersona = e.idPersona
+                  INNER JOIN sexo s ON s.idSexo = p.idSexo
+                  WHERE e.idEmpreado = $ID");
+
+    $data->execute();
+    return $data->fetch();
+  }
+
+  static public function eliminarEmpleado($ID) {
+    // echo "hola prueba";die;
+    $data = Conection::connect()->prepare("CALL eliminarEmpleado ($ID)");
+
+    $data->execute();
+    return $data->fetch();
+  }
+
+
+
 }

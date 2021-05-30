@@ -132,7 +132,7 @@
                                     <div class="form-group">
                                         <label>Sexo</label>
                                         <select class="form-control" name="sexo" id="sexo">
-                                            <option value="" disabled selected>Seleccione una opción</option>
+                                            <option value="0" disabled selected>Seleccione una opción</option>
                                             <?php foreach ($sexo as $key) {
                                             echo '<option value="' . $key['idSexo'] . '">' . $key['sexo'] . '</option>';
                                             }  ?>
@@ -173,7 +173,7 @@
                                     <div class="form-group">
                                     <label for="tipoUsuario">Tipo de usuario</label>
                                     <select class="form-control" name="tipoUsuario" id="tipoUsuario" required>
-                                        <option value="" disabled selected>Seleccione una opción</option>
+                                        <option value="0" disabled selected>Seleccione una opción</option>
                                         <?php foreach ($tipoUsuario as $key) {
                                         echo '<option value="' . $key['idTipo'] . '">' . $key['descriccion'] . '</option>';
                                         }  ?>
@@ -211,7 +211,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                             </div>
-                                            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" value="11/11/1995">
+                                            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" value="">
                                         </div>
                                     </div>
                                 </div>

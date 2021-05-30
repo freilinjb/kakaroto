@@ -2,6 +2,7 @@
 
 require_once "../Controllers/employeeController.php";
 require_once "../Models/EmployeeModel.php";
+require_once "../Models/EmpleadoModel.php";
 
 class EmpleadoAjax
 {
@@ -32,49 +33,71 @@ class EmpleadoAjax
 
     public function registrarEmpleado()
     {
-        $valor = $this->datosEmpleado;
-        $empleado = new EmpleadoAjax();
 
-    $datos = array(
-        "nombre" => $_POST["nombre"],
-        "apellido" => $_POST["apellido"],
-        "idSexo" => $_POST["idSexo"],
-        "idEstadoCivil" => $_POST["idEstadoCivil"],
-        "idTipoIdentificacion" => $_POST["idTipoIdentificacion"],
-        "Identificacion" => $_POST["Identificacion"],
-        "telefono" => $_POST["telefono"],
-        "celular" => $_POST["celular"],
-        "correo" => $_POST["correo"],
-        "fechaNacimiento" => $_POST["fechaNacimiento"],
-        "idCentro" => $_POST["idCentro"],
-        "idDepartamento" => $_POST["idDepartamento"],
-        "idPuestoTrabajo" => $_POST["idPuestoTrabajo"],
-        "fechaIngreso" => $_POST["fechaIngreso"],
+        $datos = array(
+            "nombre" => $_POST["nombre"],
+            "apellido" => $_POST["apellido"],
+            "sexo" => $_POST["idSexo"],
+            "identificacion" => $_POST["identificacion"],
+            "fechaNacimiento" => $_POST["fechaNacimiento"],
+            "usuario" => $_POST["usuario"],
+            "clave" => $_POST["clave"],
+            "tipoUsuario" => $_POST["tipoUsuario"],
+            "telefono" => $_POST["telefono"],
+            "correo" => $_POST["correo"],
+            "estado" => $_POST["estado"],
+        );
+        // print_r($_POST);die;
+
+        $respuesta  = EmpleadoModel::registrarEmpleado($datos);
+
+        // print_r($respuesta);
+        // echo "registrado";
+        echo json_encode($respuesta);
+    }
+
+    public function actualizandoEmpleado()
+    {
+
+        $datos = array(
+            "idEmpleado" => $_POST["idEmpleado"],
+            "nombre" => $_POST["nombre"],
+            "apellido" => $_POST["apellido"],
+            "sexo" => $_POST["idSexo"],
+            "identificacion" => $_POST["identificacion"],
+            "fechaNacimiento" => $_POST["fechaNacimiento"],
+            "usuario" => $_POST["usuario"],
+            "clave" => $_POST["clave"],
+            "tipoUsuario" => $_POST["tipoUsuario"],
+            "telefono" => $_POST["telefono"],
+            "correo" => $_POST["correo"],
+            "estado" => $_POST["estado"],
         );
 
-        // $empleado->datosEmpleado = $datos;
-        // $empleado->registrarEmpleado();
-        $respuesta  = EmployeeModel::registrarEmpleado($valor);
+        $respuesta  = EmpleadoModel::registrarEmpleado($datos);
 
         echo json_encode($respuesta);
     }
 
-    public function editarEmplado()
+    public function getEmpleado()
     {
-        $valor = $this->datosEmpleado;
-        $respuesta  = EmployeeModel::actualizarEmpleado($valor);
+        $idEmpleado = $_POST['idEmpleado'];
+        $respuesta  = EmpleadoModel::getEmpleado($idEmpleado);
 
         echo json_encode($respuesta);
     }
 
-    public function consultarEmpleado()
-    {
-        $item = "idEmpleado";
-        $valor = $this->idEmpleado;
-
-        $respuesta = EmployeeController::showEmployee($item, $valor);
-
-        echo json_encode($respuesta);
+    public function eliminarEmpleado() {
+        if(preg_match('/^[0-9]+$/', $_POST['idEmpleado'])) {
+            $idEmpleado = $_POST['idEmpleado'];
+            // echo "idEmpleado; " . $idEmpleado;die;
+            $respuesta  = EmpleadoModel::eliminarEmpleado($idEmpleado);
+    
+            echo json_encode($respuesta);
+        } else {
+            $datos = array("msg"=>"Solo se admiten numeros","status"=> 200);
+            echo json_encode($datos);
+        }
     }
 }
 
@@ -91,6 +114,22 @@ if(isset($_POST['exec']) && !empty($_POST['exec'])) {
 
         case 'registrarEmpleado': 
             $ejecutar -> registrarEmpleado();
+            // echo "hola mundo";
+            break;
+
+        case 'actualizandoEmpleado': 
+            $ejecutar -> actualizandoEmpleado();
+            // echo "hola mundo";
+            break;
+
+        case 'getEmpleado': 
+            $ejecutar ->getEmpleado();
+            // echo "hola mundo";
+            break;
+
+        case 'eliminarEmpleado': 
+            $ejecutar ->eliminarEmpleado();
+            // echo "hola mundo";
             break;
         case 'funcion2': 
             $b -> accion2();
