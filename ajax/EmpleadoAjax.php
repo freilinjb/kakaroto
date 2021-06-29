@@ -47,7 +47,6 @@ class EmpleadoAjax
             "correo" => $_POST["correo"],
             "estado" => $_POST["estado"],
         );
-        // print_r($_POST);die;
 
         $respuesta  = EmpleadoModel::registrarEmpleado($datos);
 
@@ -87,15 +86,16 @@ class EmpleadoAjax
         echo json_encode($respuesta);
     }
 
-    public function eliminarEmpleado() {
-        if(preg_match('/^[0-9]+$/', $_POST['idEmpleado'])) {
+    public function eliminarEmpleado()
+    {
+        if (preg_match('/^[0-9]+$/', $_POST['idEmpleado'])) {
             $idEmpleado = $_POST['idEmpleado'];
             // echo "idEmpleado; " . $idEmpleado;die;
             $respuesta  = EmpleadoModel::eliminarEmpleado($idEmpleado);
-    
+
             echo json_encode($respuesta);
         } else {
-            $datos = array("msg"=>"Solo se admiten numeros","status"=> 200);
+            $datos = array("msg" => "Solo se admiten numeros", "status" => 200);
             echo json_encode($datos);
         }
     }
@@ -105,34 +105,39 @@ class EmpleadoAjax
 
 /*=============================================
 Comprobamos que el valor no venga vacío
-=============================================*/	
-if(isset($_POST['exec']) && !empty($_POST['exec'])) {
+=============================================*/
+if (isset($_POST['exec']) && !empty($_POST['exec'])) {
     $funcion = $_POST['exec'];
     $ejecutar = new EmpleadoAjax();
     //En función del parámetro que nos llegue ejecutamos una función u otra
-    switch($funcion) {
+    switch ($funcion) {
 
-        case 'registrarEmpleado': 
-            $ejecutar -> registrarEmpleado();
+        case 'registrarEmpleado':
+            $ejecutar->registrarEmpleado();
             // echo "hola mundo";
             break;
 
-        case 'actualizandoEmpleado': 
-            $ejecutar -> actualizandoEmpleado();
+        case 'registrarProveedor':
+            $ejecutar->registrarEmpleado();
             // echo "hola mundo";
             break;
 
-        case 'getEmpleado': 
-            $ejecutar ->getEmpleado();
+        case 'actualizandoEmpleado':
+            $ejecutar->actualizandoEmpleado();
             // echo "hola mundo";
             break;
 
-        case 'eliminarEmpleado': 
-            $ejecutar ->eliminarEmpleado();
+        case 'getEmpleado':
+            $ejecutar->getEmpleado();
             // echo "hola mundo";
             break;
-        case 'funcion2': 
-            $b -> accion2();
+
+        case 'eliminarEmpleado':
+            $ejecutar->eliminarEmpleado();
+            // echo "hola mundo";
+            break;
+        case 'funcion2':
+            $b->accion2();
             break;
     }
 }
