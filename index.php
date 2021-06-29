@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CONTROLADORES
  */
@@ -15,6 +16,9 @@ require_once "Controllers/EstandarController.php";
 require_once "Controllers/OperacionesController.php";
 
 require_once "Controllers/EmpleadoController.php";
+
+require_once "Controllers/ProductoController.php";
+
 /**
  * MODELOS
  */
@@ -29,6 +33,8 @@ require_once "Models/EstandarModel.php";
 require_once "Models/OperacionesModel.php";
 
 require_once "Models/EmpleadoModel.php";
+
+require_once "Models/ProductoModel.php";
 
 
 $template = new TemplateController();

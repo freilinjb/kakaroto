@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     .btn-file:hover {
         cursor: pointer;
     }
@@ -96,7 +96,7 @@
         font-weight: 600;
         color: #0062cc;
     }
-</style>
+</style> -->
 
 <section class="content-header">
     <div class="container-fluid">

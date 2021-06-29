@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KK-ROTO</title>
+    <title>Ventas-CRACKS</title>
     <!-- jQuery -->
     <script src="views/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -24,7 +24,3 @@
     <!-- STYLE PERSONAL -->
     <link rel="stylesheet" href="views/assets/css/style.css">
 </head>
-
-
-
-

@@ -11,37 +11,10 @@ class EmployeeController
     return $request;
   }
 
-  static public function registrarEmpleado($re)
+  static public function registrarEmpleado()
   {
-
     if (isset($_POST["nombre"])) {
-      if (
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) &&
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["apellido"]) &&
-        preg_match('/^[0-9]+$/', $_POST["idSexo"]) &&
-        preg_match('/^[0-9]+$/', $_POST["idEstadoCivil"]) &&
-        preg_match('/^[0-9]+$/', $_POST["idTipoIdentificacion"]) &&
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["Identificacion"]) &&
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["celular"]) &&
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["correo"]) &&
-        preg_match('/^[-.\/-0-9]+$/', $_POST["fechaNacimiento"]) &&
-        preg_match('/^[-.\/-0-9]+$/', $_POST["fechaIngreso"])
-      ) {
-
-        $datos = array(
-          "nombre" => $_POST["nombre"],
-          "apellido" => $_POST["apellido"],
-          "nombidSexore" => $_POST["idSexo"],
-          "idEstadoCivil" => $_POST["idEstadoCivil"],
-          "idTipoIdentificacion" => $_POST["idTipoIdentificacion"],
-          "Identificacion" => $_POST["Identificacion"],
-          "telefono" => $_POST["telefono"],
-          "celular" => $_POST["celular"],
-          "correo" => $_POST["correo"],
-          "fechaNacimiento" => $_POST["fechaNacimiento"],
-          "fechaIngreso" => $_POST["fechaIngreso"]
-        );
-      }
+      print_r($_POST);
     }
   }
 

@@ -5,6 +5,7 @@ require "Conection.php";
 class ProvedoresModel
 {
 
+
   static public function showProvedores($table, $item, $value)
   {
     $data = null;
@@ -25,23 +26,18 @@ class ProvedoresModel
   static public function registrarProvedores($datos)
   {
 
-    $request = Conection::connect()->prepare("CALL registrarProvedores(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $request = Conection::connect()->prepare("CALL addProveedor(NULL,?,?,?,?,?,?,?,?,?,?)");
 
     $request->bindParam("1", $datos["nombre"], PDO::PARAM_STR);
-    $request->bindParam("2", $datos["apellido"], PDO::PARAM_STR);
-    $request->bindParam("3", $datos["idSexo"], PDO::PARAM_INT);
-    $request->bindParam("4", $datos["idEstadoCivil"], PDO::PARAM_INT);
-    $request->bindParam("5", $datos["idTipoIdentificacion"], PDO::PARAM_INT);
-    $request->bindParam("6", $datos["Identificacion"], PDO::PARAM_STR);
-    $request->bindParam("7", $datos["correo"], PDO::PARAM_STR);
-    $request->bindParam("8", $datos["telefono"], PDO::PARAM_STR);
-    $request->bindParam("9", $datos["celular"], PDO::PARAM_STR);
-    $request->bindParam("10", $datos["idCentro"], PDO::PARAM_INT);
-    $request->bindParam("11", $datos["idDepartamento"], PDO::PARAM_INT);
-    $request->bindParam("12", $datos["idPuestoTrabajo"], PDO::PARAM_INT);
-    $request->bindParam("13", $datos["fechaNacimiento"], PDO::PARAM_STR);
-    $request->bindParam("14", $datos["fechaIngreso"], PDO::PARAM_STR);
-    $request->bindParam("15", $datos["foto"], PDO::PARAM_STR);
+    $request->bindParam("2", $datos["RNC"], PDO::PARAM_STR);
+    $request->bindParam("3", $datos["correo"], PDO::PARAM_INT);
+    $request->bindParam("4", $datos["telefono"], PDO::PARAM_INT);
+    $request->bindParam("5", $datos["idProvincia"], PDO::PARAM_INT);
+    $request->bindParam("6", $datos["idCiudad"], PDO::PARAM_STR);
+    $request->bindParam("7", $datos["direccion"], PDO::PARAM_STR);
+    $request->bindParam("8", $datos["observacion"], PDO::PARAM_STR);
+    $request->bindParam("9", $datos["estado"], PDO::PARAM_STR);
+
 
     $request->execute();
 
@@ -51,23 +47,17 @@ class ProvedoresModel
   static public function actualizarEmpleado($datos)
   {
 
-    $request = Conection::connect()->prepare("CALL registrarProvedores(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NULL)");
+    $request = Conection::connect()->prepare("CALL addProveedor(NULL,?,?,?,?,?,?,?,?,?,?)");
 
-    $request->bindParam("1", $datos["idEmpleado"], PDO::PARAM_INT);
-    $request->bindParam("2", $datos["nombre"], PDO::PARAM_STR);
-    $request->bindParam("3", $datos["apellido"], PDO::PARAM_STR);
-    $request->bindParam("4", $datos["idSexo"], PDO::PARAM_INT);
-    $request->bindParam("5", $datos["idEstadoCivil"], PDO::PARAM_INT);
-    $request->bindParam("6", $datos["idTipoIdentificacion"], PDO::PARAM_INT);
-    $request->bindParam("7", $datos["Identificacion"], PDO::PARAM_STR);
-    $request->bindParam("8", $datos["correo"], PDO::PARAM_STR);
-    $request->bindParam("9", $datos["telefono"], PDO::PARAM_STR);
-    $request->bindParam("10", $datos["celular"], PDO::PARAM_STR);
-    $request->bindParam("11", $datos["idCentro"], PDO::PARAM_INT);
-    $request->bindParam("12", $datos["idDepartamento"], PDO::PARAM_INT);
-    $request->bindParam("13", $datos["idPuestoTrabajo"], PDO::PARAM_INT);
-    $request->bindParam("14", $datos["fechaNacimiento"], PDO::PARAM_STR);
-    $request->bindParam("15", $datos["fechaIngreso"], PDO::PARAM_STR);
+    $request->bindParam("1", $datos["nombre"], PDO::PARAM_STR);
+    $request->bindParam("2", $datos["RNC"], PDO::PARAM_STR);
+    $request->bindParam("3", $datos["correo"], PDO::PARAM_INT);
+    $request->bindParam("4", $datos["telefono"], PDO::PARAM_INT);
+    $request->bindParam("5", $datos["idProvincia"], PDO::PARAM_INT);
+    $request->bindParam("6", $datos["idCiudad"], PDO::PARAM_STR);
+    $request->bindParam("7", $datos["direccion"], PDO::PARAM_STR);
+    $request->bindParam("8", $datos["observacion"], PDO::PARAM_STR);
+    $request->bindParam("9", $datos["estado"], PDO::PARAM_STR);
 
     $request->execute();
 
