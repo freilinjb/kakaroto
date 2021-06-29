@@ -1,103 +1,3 @@
-<style>
-    .btn-file:hover {
-        cursor: pointer;
-    }
-
-    .emp-profile {
-        padding: 3%;
-        margin-top: 3%;
-        margin-bottom: 3%;
-        border-radius: 0.5rem;
-        background: #fff;
-    }
-
-    .profile-img {
-        text-align: center;
-    }
-
-    .profile-img .file {
-        position: relative;
-        overflow: hidden;
-        margin-top: -30%;
-        width: 60%;
-        border: none;
-        border-radius: 0;
-        font-size: 15px;
-        background: #212529b8;
-    }
-
-    .profile-img .file input {
-        position: absolute;
-        opacity: 0;
-        right: 0;
-        top: 0;
-    }
-
-    .profile-head h5 {
-        color: #333;
-    }
-
-    .profile-head h6 {
-        color: #0062cc;
-    }
-
-    .profile-edit-btn {
-        border: none;
-        border-radius: 1.5rem;
-        width: 70%;
-        padding: 2%;
-        font-weight: 600;
-        color: #6c757d;
-        cursor: pointer;
-    }
-
-    .profile-head .nav-tabs {
-        margin-bottom: 5%;
-    }
-
-    .profile-head .nav-tabs .nav-link {
-        font-weight: 600;
-        border: none;
-    }
-
-    .profile-head .nav-tabs .nav-link.active {
-        border: none;
-        border-bottom: 2px solid #0062cc;
-    }
-
-    .profile-work {
-        padding: 14%;
-        margin-top: -15%;
-    }
-
-    .profile-work p {
-        font-size: 12px;
-        color: #818182;
-        font-weight: 600;
-        margin-top: 10%;
-    }
-
-    .profile-work a {
-        text-decoration: none;
-        color: #495057;
-        font-weight: 600;
-        font-size: 14px;
-    }
-
-    .profile-work ul {
-        list-style: none;
-    }
-
-    .profile-tab label {
-        font-weight: 600;
-    }
-
-    .profile-tab p {
-        font-weight: 600;
-        color: #0062cc;
-    }
-</style>
-
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -131,7 +31,7 @@
                     <div class="card-body">
                         <div class="">
                             <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister">
-                            <i class="fa fa-plus"></i>
+                                <i class="fa fa-plus"></i>
                                 Employee
                             </button>
                         </div>
@@ -159,21 +59,20 @@
 
                                     $foto = null;
 
-                                    if(strlen($value["foto_url"]) > 10) {
-                                        $foto_temp = str_replace($value["foto_url"],'',"");
-                                        $foto ="<img src='". $value["foto_url"]. "'  class='img-circle img-size-32 mr-2'>";
-
+                                    if (strlen($value["foto_url"]) > 10) {
+                                        $foto_temp = str_replace($value["foto_url"], '', "");
+                                        $foto = "<img src='" . $value["foto_url"] . "'  class='img-circle img-size-32 mr-2'>";
                                     } else {
-                                        $foto ="<img src='views/assets/img/empleados/hombre.png' class='img-circle img-size-32 mr-2'>";
+                                        $foto = "<img src='views/assets/img/empleados/hombre.png' class='img-circle img-size-32 mr-2'>";
                                     }
-                     
+
                                     if ($value["Estado"] == "activo") {
                                         $clase = "<span class='badge badge-success'>" . $value["Estado"] . "</span>";
                                     }
 
                                     echo '<tr>
                                     <td>' . ($key + 1) . '</td>
-                                    <td>' . $foto . $value["nombre"] .' '. $value["apellido"] . '</td>
+                                    <td>' . $foto . $value["nombre"] . ' ' . $value["apellido"] . '</td>
                                     <td>' . $value["Correo"] . '</td>
                                     <td>' . $value["telefono"] . '</td>
                                     <td>' . $value["celular"] . '</td>
@@ -658,8 +557,8 @@
             "info": true,
             "paging": true,
             "pageLength": 7,
-           // "ajax": "ajax/datatable-empleados.php"
-           "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // "ajax": "ajax/datatable-empleados.php"
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#empleados_wrapper  .col-md-6:eq(0)');
     });
 </script>

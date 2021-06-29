@@ -43,52 +43,51 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Telephone</th>
-                  <th>CellPhone</th>
-                  <th>Puesto de trabajo</th>
-                  <th>Departamento</th>
-                  <th>Centro</th>
+                  <th>Nombre</th>
+                  <th>RNC</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>
+                  <th>Provincia</th>
+                  <th>Ciudad</th>
+                  <th>Direccion</th>
+                  <th>Obsercacion</th>
                   <th>Estado</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
 
-                $employee = EmployeeController::showEmployee(null, null);
-                $clase = null;
-                foreach ($employee as $key => $value) {
-
-                  $foto = null;
-
-                  if (strlen($value["foto_url"]) > 10) {
-                    $foto_temp = str_replace($value["foto_url"], '', "");
-                    $foto = "<img src='" . $value["foto_url"] . "'  class='img-circle img-size-32 mr-2'>";
+                foreach ($provedor as $index => $value) {
+                  $estado = null;
+                  if ($value["estado"] == 'Activo') {
+                    $estado = "<span class='badge badge-primary'>" . $value["estado"] . "</span>";
                   } else {
-                    $foto = "<img src='views/assets/img/empleados/hombre.png' class='img-circle img-size-32 mr-2'>";
+                    $estado = "<span class='badge badge-danger'>" . $value["estado"] . "</span>";
                   }
-
-                  if ($value["Estado"] == "activo") {
-                    $clase = "<span class='badge badge-success'>" . $value["Estado"] . "</span>";
-                  }
-
-                  echo '<tr>
-                                    <td>' . ($key + 1) . '</td>
-                                    <td>' . $foto . $value["nombre"] . ' ' . $value["apellido"] . '</td>
-                                    <td>' . $value["Correo"] . '</td>
-                                    <td>' . $value["telefono"] . '</td>
-                                    <td>' . $value["celular"] . '</td>
-                                    <td>' . $value["PuestoTrabajo"] . '</td>
-                                    <td>' . $value["Departamento"] . '</td>             
-                                    <td>' . $value["Centro"] . '</td>
-                                    <td>' . $clase . '</td>
-                                    <td>
-                                        <button class="btn btn-info btnEditEmployee" data-toggle="modal" data-target="#modalEditarEmpleado" idEmployee="' . $value["idEmpleado"] . '"><i class="fas fa-eye"></i></button>
-                                    </td>
-                                    </tr>';
+                  echo '<tr>';
+                  echo '<td>' . ($index + 1) . '</td>';
+                  echo '<td>' . $value["nombre"] . '</td>';
+                  echo '<td>' . $value["RNC"] . '</td>';
+                  echo '<td>' . $value["correo"] . '</td>';
+                  echo '<td>' . $value["telefono"] . '</td>';
+                  echo '<td>' . $value["provincia"] . '</td>';
+                  echo '<td>' . $value["ciudad"] . '</td>';
+                  echo '<td>' . $value["direccion"] . '</td>';
+                  echo '<td>' . $value["observacion"] . '</td>';
+                  echo '<td>' . $estado  . '</td>';
+                  echo '<td>
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-primary btn-editar" data-toggle="modal" data-target="#modalEmployeeRegister" idProvedor="' . $value["idProvedor"] . '">Editar</button>
+                          <button type="button" class="btn btn-danger btn-eliminar"  idProvedor="' . $value["idProvedor"] . '">Eliminar</button>
+                      </div>
+                          </td>';
+                  echo '</tr>';
                 }
+
+
+
+
+
                 ?>
               </tbody>
             </table>
@@ -106,7 +105,7 @@
     <div class="modal-content">
       <form id="formEmployee" enctype="multipart/form-data">
         <div class="modal-header bg-info">
-          <h4 class="modal-title">Register Employee</h4>
+          <h4 class="modal-title">Register Provedores</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -129,22 +128,11 @@
                 <div class="col-6-lg col-xl-6 col-sm-12">
                   <!-- Date dd/mm/yyyy -->
                   <div class="form-group">
-                    <label>Apellido</label>
+                    <label>RNC</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido" autocomplete="off">
+                      <input type="text" class="form-control" name="RNC" id="RNC" placeholder="Ingrese el RNC" autocomplete="off">
                     </div>
                     <!-- /.input group -->
-                  </div>
-                </div>
-                <div class="col-6-lg col-xl-6 col-sm-12">
-                  <div class="form-group">
-                    <label>Telefono fijo</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                      </div>
-                      <input type="text" class="form-control" name="telefono" id="telefono" autocomplete="off">
-                    </div>
                   </div>
                 </div>
 
@@ -159,6 +147,91 @@
                     </div>
                   </div>
                 </div>
+
+
+
+                <div class="col-6-lg col-xl-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Telefono fijo</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                      </div>
+                      <input type="text" class="form-control" name="telefono" id="telefono" autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6-lg col-xl-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Provincia</label>
+                    <select class="form-control" name="provincia" id="provincia">
+                      <option value="0" disabled selected>Seleccione una opción</option>
+                      <?php foreach ($provincia as $key) {
+                        echo '<option value="' . $key['idProvicia'] . '">' . $key['provincia'] . '</option>';
+                      }  ?>
+                    </select>
+                  </div>
+                </div>
+
+
+                <div class="col-6-lg col-xl-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Ciudad</label>
+                    <select class="form-control" name="ciudad" id="ciudad">
+                      <option value="0" disabled selected>Seleccione una opción</option>
+                      <?php foreach ($ciudad as $key) {
+                        echo '<option value="' . $key['idCiudad'] . '">' . $key['ciudad'] . '</option>';
+                      }  ?>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="col-sm-12">
+                  <!-- Date dd/mm/yyyy -->
+                  <div class="form-group">
+                    <label>Direccion</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese la Direccion" autocomplete="off">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Observacion</label>
+                    <div class="input-group mb-3">
+                      <textarea name="observacion" id="observacion" class="form-control" placeholder="Ingrese una Observacion" cols="30" rows="2"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-6-lg col-xl-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" class="form-control" name="estado" required>
+                      <option value="1" selected>Activo</option>
+                      <option value="0">Inactivo</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <hr>
               </div>
@@ -177,203 +250,6 @@
 
 <!-- END MODAL REGISTRAR EMPLEADO-->
 
-<!-- MODAL REGISTRAR EDITAR-->
-<div class="modal fade" id="modalEditarEmpleado" style="display: none; padding-right: 17px;" aria-modal="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header bg-info">
-        <h4 class="modal-title">Register Employee</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="col-12">
-          <form id="formEmployeeEditar" enctype="multipart/form-data">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="profile-img">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" width="150px" height="150px" class="img-thumbnail previsualizar" alt="">
-                  <div class="file btn btn-lg btn-primary">
-                    Cambiar foto
-                    <input type="file" name="fotoEditar" class="nuevaImagen" name="nuevaImagen" accept="image/x-png, image/gif, image/jpeg, image/jpg">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="profile-head">
-                  <h2 id="nombreP">
-                    Kshiti Ghelani
-                  </h2>
-                  <h6 id="departamentoP">
-                    Web Developer and Designer
-                  </h6>
-
-                </div>
-              </div>
-            </div>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Info. personal</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Info. laboral</a>
-              </li>
-            </ul>
-            <div class="row">
-              <div class="12">
-                <div class="tab-content profile-tab" id="myTabContent">
-                  <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="row justify-content-center">
-                      <div class="col-6-lg col-xl-6 col-sm-12">
-                        <!-- Date dd/mm/yyyy -->
-                        <div class="form-group">
-                          <label>Nombre</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" name="nombreEditar" id="nombreEditar" placeholder="Ingrese el nombre" autocomplete="off">
-                            <input type="hidden" id="idEmpleado" name="idEmpleado">
-
-                          </div>
-                          <!-- /.input group -->
-                        </div>
-                      </div>
-                      <div class="col-6-lg col-xl-6 col-sm-12">
-                        <!-- Date dd/mm/yyyy -->
-                        <div class="form-group">
-                          <label>Apellido</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" name="apellidoEditar" id="apellidoEditar" placeholder="Ingrese el apellido" autocomplete="off">
-                          </div>
-                          <!-- /.input group -->
-                        </div>
-                      </div>
-                      < class="col-6-lg col-xl-6 col-sm-12">
-                        <div class="form-group">
-                          <label>Sexo</label>
-                          <select class="form-control" name="sexoEditar" id="sexoEditar">
-                            <option value="" disabled selected>Seleccione una opción</option>
-                            <?php
-                            $sexo = EmployeeController::listarSexo();
-                            foreach ($sexo as $index => $valor) {
-                              echo "<option value=" . $valor["idSexo"] . ">" . $valor["Sexo"] . "</option>";
-                            }
-                            ?>
-                          </select>
-                        </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label>Identificacion</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" name="identificacionEditar" id="identificacionEditar" placeholder="Ingrese el numero de ducumento" autocomplete="off">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label>Telefono fijo</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                          </div>
-                          <input type="text" class="form-control" name="telefonoEditar" id="telefonoEditar" autocomplete="off">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label>Celular</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-mobile"></i></span>
-                          </div>
-                          <input type="text" class="form-control" name="celularEditar" id="celularEditar" autocomplete="off">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label>Correo</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                          </div>
-                          <input type="email" class="form-control" name="correoEditar" id="correoEditar" autocomplete="off">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <!-- Date dd/mm/yyyy -->
-                      <div class="form-group">
-                        <label>Fecha de nacimiento:</label>
-
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                          </div>
-                          <input type="date" class="form-control" name="fechaNacimientoEditar" id="fechaNacimientoEditar">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <div class="row">
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label for="">Centro de operación</label>
-                        <select class="form-control" name="centroEditar" id="centroEditar">
-                          <option value="" disabled selected>Seleccione una opción</option>
-                          <?php
-                          $centro = EmployeeController::listarCentro();
-                          foreach ($centro as $index => $valor) {
-                            echo "<option value=" . $valor["idCentro"] . ">" . $valor["Centro"] . "</option>";
-                          }
-                          ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label for="">Departamento</label>
-                        <select class="form-control" name="departamentoEditar" id="departamentoEditar">
-                          <option value="" disabled selected>Seleccione una opción</option>
-                          <?php
-                          $departamento = EmployeeController::listarDepartamento();
-                          foreach ($departamento as $index => $valor) {
-                            echo "<option value=" . $valor["idDepartamento"] . ">" . $valor["Departamento"] . "</option>";
-                          }
-                          ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label for="">Puesto de trabajo</label>
-                        <select class="form-control" name="puestoTrabajoEditar" id="puestoTrabajoEditar">
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-6-lg col-xl-6 col-sm-12">
-                      <div class="form-group">
-                        <label for="">Fecha de Ingreso</label>
-                        <input type="date" class="form-control" name="fechaIngresoEditar" id="fechaIngresoEditar">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" id="closeEditar" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-info">Save changes</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
 </div>
