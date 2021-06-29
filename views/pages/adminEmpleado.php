@@ -1,7 +1,7 @@
 <?php
-    $empleado = EmpleadoController::getEmpleados(null, null);
-    $sexo = EmpleadoController::getSexo(null, null);
-    $tipoUsuario = EmpleadoController::getTipoUsuario(null, null);
+$empleado = EmpleadoController::getEmpleados(null, null);
+$sexo = EmpleadoController::getSexo(null, null);
+$tipoUsuario = EmpleadoController::getTipoUsuario(null, null);
 ?>
 
 <section class="content-header">
@@ -33,11 +33,12 @@
                             <i class="fas fa-edit"></i>
                             Registro de Empleado
                         </h3>
+                        s
                     </div>
                     <div class="card-body">
                         <div class="">
                             <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalEmployeeRegister" id="registroCliente">
-                                 <strong> + </strong> Empleado
+                                <strong> + </strong> Empleado
                             </button>
                         </div>
                         <table id="empleados" class="table table-bordered table-striped table-hover">
@@ -57,28 +58,28 @@
                             <tbody>
                                 <?php
                                 foreach ($empleado as $index => $value) {
-                                $estado = null;
-                                if ($value["estado"] == 'Activo') {
-                                    $estado = "<span class='badge badge-primary'>" . $value["estado"] . "</span>";
-                                } else {
-                                    $estado = "<span class='badge badge-danger'>" . $value["estado"] . "</span>";
-                                }
-                                echo '<tr>';
-                                echo '<td>' . ($index + 1) . '</td>';
-                                echo '<td>' . $value["user"] . '</td>';
-                                echo '<td>' . $value["nombre"] . '</td>';
-                                echo '<td>' . $value["apellido"] . '</td>';
-                                echo '<td>' . $value["fechaNaci"] . '</td>';
-                                echo '<td>' . $value["correo"] . '</td>';
-                                echo '<td>' . $value["telefono"] . '</td>';
-                                echo '<td>' . $estado  . '</td>';
-                                echo '<td>
+                                    $estado = null;
+                                    if ($value["estado"] == 'Activo') {
+                                        $estado = "<span class='badge badge-primary'>" . $value["estado"] . "</span>";
+                                    } else {
+                                        $estado = "<span class='badge badge-danger'>" . $value["estado"] . "</span>";
+                                    }
+                                    echo '<tr>';
+                                    echo '<td>' . ($index + 1) . '</td>';
+                                    echo '<td>' . $value["user"] . '</td>';
+                                    echo '<td>' . $value["nombre"] . '</td>';
+                                    echo '<td>' . $value["apellido"] . '</td>';
+                                    echo '<td>' . $value["fechaNaci"] . '</td>';
+                                    echo '<td>' . $value["correo"] . '</td>';
+                                    echo '<td>' . $value["telefono"] . '</td>';
+                                    echo '<td>' . $estado  . '</td>';
+                                    echo '<td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-primary btn-editar" data-toggle="modal" data-target="#modalEmployeeRegister" idEmpleado="' . $value["idEmpleado"] . '">Editar</button>
                                         <button type="button" class="btn btn-danger btn-eliminar"  idEmpleado="' . $value["idEmpleado"] . '">Eliminar</button>
                                     </div>
                                         </td>';
-                                echo '</tr>';
+                                    echo '</tr>';
                                 }
                                 ?>
                             </tbody>
@@ -107,7 +108,7 @@
                     <div class="card hovercard">
                         <div class="card-body">
                             <div class="row">
-                            <input type="hidden" name="idEmpleado" id="idEmpleado" value="0">
+                                <input type="hidden" name="idEmpleado" id="idEmpleado" value="0">
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <!-- Date dd/mm/yyyy -->
                                     <div class="form-group">
@@ -134,7 +135,7 @@
                                         <select class="form-control" name="sexo" id="sexo">
                                             <option value="0" disabled selected>Seleccione una opción</option>
                                             <?php foreach ($sexo as $key) {
-                                            echo '<option value="' . $key['idSexo'] . '">' . $key['sexo'] . '</option>';
+                                                echo '<option value="' . $key['idSexo'] . '">' . $key['sexo'] . '</option>';
                                             }  ?>
                                         </select>
                                     </div>
@@ -171,13 +172,13 @@
                                 </div>
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <div class="form-group">
-                                    <label for="tipoUsuario">Tipo de usuario</label>
-                                    <select class="form-control" name="tipoUsuario" id="tipoUsuario" required>
-                                        <option value="0" disabled selected>Seleccione una opción</option>
-                                        <?php foreach ($tipoUsuario as $key) {
-                                        echo '<option value="' . $key['idTipo'] . '">' . $key['descriccion'] . '</option>';
-                                        }  ?>
-                                    </select>
+                                        <label for="tipoUsuario">Tipo de usuario</label>
+                                        <select class="form-control" name="tipoUsuario" id="tipoUsuario" required>
+                                            <option value="0" disabled selected>Seleccione una opción</option>
+                                            <?php foreach ($tipoUsuario as $key) {
+                                                echo '<option value="' . $key['idTipo'] . '">' . $key['descriccion'] . '</option>';
+                                            }  ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-6-lg col-xl-6 col-sm-12">
@@ -217,11 +218,11 @@
                                 </div>
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <div class="form-group">
-                                    <label for="estado">Estado</label>
-                                    <select id="estado" class="form-control" name="estado" required>
-                                        <option value="1" selected>Activo</option>
-                                        <option value="0">Inactivo</option>
-                                    </select>
+                                        <label for="estado">Estado</label>
+                                        <select id="estado" class="form-control" name="estado" required>
+                                            <option value="1" selected>Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
