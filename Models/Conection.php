@@ -9,7 +9,7 @@ class Conection
         // "ugdb6r5tpc7tmuoe","IRtGYq1A8m1EOYVzcPIa");
 
         //BETA LOCAL
-        $link = new PDO("mysql:host=localhost;dbname=project3", "root", "Slvdr1852");
+        $link = new PDO("mysql:host=localhost;dbname=project3", "root", "1423");
 
         $link->exec("set names utf8");
         return $link;

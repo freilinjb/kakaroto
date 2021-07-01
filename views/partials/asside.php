@@ -28,7 +28,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Admin de Registro
+                                    MANTENIMIENTO
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -52,12 +52,67 @@
                                         <p>Admin. Provedores</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="/ventas_crack/index.php?route=administracionProductos" <?php if ($_GET['route'] == "administracionProductos") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Admin. Productos</p>
                                     </a>
+                                </li> -->
+
+
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>
+                                            PRODUCTO
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="/ventas_crack/index.php?route=adminEmpleado" <?php if ($_GET['route'] == "adminEmpleado") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p> Producto</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/ventas_crack/index.php?route=adminUnidad" <?php if ($_GET['route'] == "clientes") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p> Unidad</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/ventas_crack/index.php?route=provedores" <?php if ($_GET['route'] == "provedores") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p> Categoria</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/ventas_crack/index.php?route=administracionProductos" <?php if ($_GET['route'] == "administracionProductos") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p> Sub Categoria</p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </ul>
                         </li>
 

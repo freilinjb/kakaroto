@@ -1,7 +1,5 @@
 <?php
 
-require_once "../Controllers/employeeController.php";
-require_once "../Models/EmployeeModel.php";
 require_once "../Models/EmpleadoModel.php";
 
 class EmpleadoAjax
@@ -10,26 +8,6 @@ class EmpleadoAjax
     public $idSexo;
     public $idDepartamento;
     public $datosEmpleado;
-
-    public function listarEstadosCiviles()
-    {
-
-        $item = "idSexo";
-        $valor = $this->idSexo;
-
-        $respusta = EmployeeController::listarEstadoCiviles($item, $valor);
-        echo json_encode($respusta);
-    }
-
-    public function listarPuestroTrabajo()
-    {
-
-        $item = "idDepartamento";
-        $valor = $this->idDepartamento;
-
-        $respusta = EmployeeController::listarPuestroTrabajo($item, $valor);
-        echo json_encode($respusta);
-    }
 
     public function registrarEmpleado()
     {
@@ -80,6 +58,7 @@ class EmpleadoAjax
 
     public function getEmpleado()
     {
+
         $idEmpleado = $_POST['idEmpleado'];
         $respuesta  = EmpleadoModel::getEmpleado($idEmpleado);
 

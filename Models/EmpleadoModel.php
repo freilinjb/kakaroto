@@ -101,10 +101,11 @@ class EmpleadoModel
 
   static public function getEmpleado($ID)
   {
-    // echo "hola prueba";die;
+    // echo "hola prueba" . $ID;
+    // die;
     $data = Conection::connect()->prepare("
         SELECT * FROM empleado_v
-        WHERE idEmpreado = $ID");
+        WHERE idUser = $ID");
 
     $data->execute();
     return $data->fetch();

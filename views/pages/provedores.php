@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -55,40 +51,9 @@
                 </tr>
               </thead>
               <tbody>
-                <?php
-
-                foreach ($provedor as $index => $value) {
-                  $estado = null;
-                  if ($value["estado"] == 'Activo') {
-                    $estado = "<span class='badge badge-primary'>" . $value["estado"] . "</span>";
-                  } else {
-                    $estado = "<span class='badge badge-danger'>" . $value["estado"] . "</span>";
-                  }
-                  echo '<tr>';
-                  echo '<td>' . ($index + 1) . '</td>';
-                  echo '<td>' . $value["nombre"] . '</td>';
-                  echo '<td>' . $value["RNC"] . '</td>';
-                  echo '<td>' . $value["correo"] . '</td>';
-                  echo '<td>' . $value["telefono"] . '</td>';
-                  echo '<td>' . $value["provincia"] . '</td>';
-                  echo '<td>' . $value["ciudad"] . '</td>';
-                  echo '<td>' . $value["direccion"] . '</td>';
-                  echo '<td>' . $value["observacion"] . '</td>';
-                  echo '<td>' . $estado  . '</td>';
-                  echo '<td>
-                          <div class="btn-group" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-primary btn-editar" data-toggle="modal" data-target="#modalEmployeeRegister" idProvedor="' . $value["idProvedor"] . '">Editar</button>
-                          <button type="button" class="btn btn-danger btn-eliminar"  idProvedor="' . $value["idProvedor"] . '">Eliminar</button>
-                      </div>
-                          </td>';
-                  echo '</tr>';
-                }
 
 
 
-
-
-                ?>
               </tbody>
             </table>
           </div>

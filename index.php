@@ -5,7 +5,6 @@
  */
 require_once "Controllers/TemplateController.php";
 require_once "Controllers/UserController.php";
-require_once "Controllers/employeeController.php";
 require_once "Controllers/PruebaCrack.php";
 require_once "Controllers/ProductoController.php";
 
@@ -18,6 +17,9 @@ require_once "Controllers/OperacionesController.php";
 require_once "Controllers/EmpleadoController.php";
 
 require_once "Controllers/ProductoController.php";
+
+// require_once "Controllers/ProvedoresController.php";
+
 
 /**
  * MODELOS
@@ -35,7 +37,8 @@ require_once "Models/OperacionesModel.php";
 require_once "Models/EmpleadoModel.php";
 
 require_once "Models/ProductoModel.php";
-
+//PROVEEDOR
+// require_once "Models/ProvedoresModel";
 
 $template = new TemplateController();
 $template->template();
