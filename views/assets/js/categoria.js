@@ -1,10 +1,4 @@
 $(function () {
-  $(document).ready(function () {
-    //$(selector).inputmask("99-9999999");  //static mask
-    $("#identificacion").inputmask({ mask: "999-9999999-9" });
-    $("#telefono").inputmask({ mask: "(999) 999-9999" }); //specifying options
-    $("#celular").inputmask({ mask: "(999) 999-9999" }); //specifying options
-  });
 
   //VALIDACION
   $(function () {
@@ -14,43 +8,12 @@ $(function () {
       },
     });
 
-    $("#formEmployee").validate({
+    $("#formCategoria").validate({
       rules: {
         
         nombre: {
           required: true,
           minlength: 2,
-        },
-        apellido: {
-          required: true,
-        },
-        apellido: {
-          required: true,
-        },
-        sexo: {
-          required: true,
-        },
-        identificacion: {
-          required: true,
-        },
-        usuario: {
-          required: true,
-        },
-        clave: {
-          required: true,
-        },
-        tipoUsuario: {
-          required: true,
-        },
-        telefono: {
-          required: true,
-        },
-        correo: {
-          required: true,
-          email: true,
-        },
-        fechaNacimiento: {
-          required: true,
         },
         estado: {
           required: true,
@@ -75,27 +38,18 @@ $(function () {
         console.log('evento: ', e);
         const dato = new FormData();
 
-        if(Number($('#idEmpleado').val()) > 0 ) { 
-          dato.append("exec", 'actualizandoEmpleado');
-          dato.append("idEmpleado", Number($('#idEmpleado').val()));
+        if(Number($('#idCategoria').val()) > 0 ) { 
+          dato.append("exec", 'actualizandoCategoria');
+          dato.append("idCategoria", Number($('#idCategoria').val()));
           console.log('actualizandoEmpleado');
         } else { 
-          dato.append("exec", 'registrarEmpleado');
-          console.log('registrarEmpleado');
+          dato.append("exec", 'registrarCategoria');
+          console.log('registrarCategoria');
         }
 
         //return;
         // dato.append("exec", 'registrarEmpleado');
         dato.append("nombre", $("#nombre").val());
-        dato.append("apellido", $("#apellido").val());
-        dato.append("idSexo", $("#sexo").val());
-        dato.append("identificacion", $("#identificacion").val());
-        dato.append("usuario", $("#usuario").val());
-        dato.append("clave", $("#clave").val());
-        dato.append("tipoUsuario", $("#tipoUsuario").val());
-        dato.append("telefono", $("#telefono").val());
-        dato.append("correo", $("#correo").val());
-        dato.append("fechaNacimiento", $("#fechaNacimiento").val());
         dato.append("estado", $("#estado").val());
 
         console.log('daara: ', dato);
@@ -210,16 +164,16 @@ $(function () {
   $("#empleados").on("click", ".btn-editar", function () {
     console.log($(".form-control").val());
 
-    const idEmpleado = $(this).attr("idEmpleado");
-    console.log('idEmpleado: ', idEmpleado);
-    $('#idEmpleado').val(idEmpleado);
+    const idCategoria = $(this).attr("idCategoria");
+    console.log('idCategoria: ', idCategoria);
+    $('#idCategoria').val(idCategoria);
 
     const data = new FormData();
-    data.append("exec", 'getEmpleado');
-    data.append("idEmpleado", idEmpleado);
+    data.append("exec", 'getCategoria');
+    data.append("idCategoria", idCategoria);
 
     $.ajax({
-      url: "ajax/EmpleadoAjax.php",
+      url: "ajax/CategoriaAjax.php",
       method: "POST",
       data: data,
       cache: false,
@@ -230,18 +184,18 @@ $(function () {
         console.log('editarRespuesta: ', respuesta);
 
 
-        $("#idEmpleado").val(respuesta["idEmpleado"]);
-        $("#nombre").val(respuesta["nombre"]);
-        $("#apellido").val(respuesta["apellido"]);
-        $("#sexo").val(Number(respuesta["idSexo"]));
-        $("#identificacion").val(respuesta["identificacion"]);
-        $("#usuario").val(respuesta["usuario"]);
-        $("#clave").val(respuesta["clave"]);
-        $("#tipoUsuario").val(Number(respuesta["idTipoUsuario"]));
-        $("#telefono").val(respuesta["telefono"]);
-        $("#Correo").val(respuesta["Correo"]);
-        $("#fechaNacimiento").val(respuesta["fechaNacimiento"]);
-        $("#estado").val(respuesta["estado"]);
+        // $("#idEmpleado").val(respuesta["idEmpleado"]);
+        // $("#nombre").val(respuesta["nombre"]);
+        // $("#apellido").val(respuesta["apellido"]);
+        // $("#sexo").val(Number(respuesta["idSexo"]));
+        // $("#identificacion").val(respuesta["identificacion"]);
+        // $("#usuario").val(respuesta["usuario"]);
+        // $("#clave").val(respuesta["clave"]);
+        // $("#tipoUsuario").val(Number(respuesta["idTipoUsuario"]));
+        // $("#telefono").val(respuesta["telefono"]);
+        // $("#Correo").val(respuesta["Correo"]);
+        // $("#fechaNacimiento").val(respuesta["fechaNacimiento"]);
+        // $("#estado").val(respuesta["estado"]);
       },
     });
   });

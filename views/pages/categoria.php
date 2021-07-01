@@ -87,7 +87,7 @@ $categorias = CategoriaController::getCategoria();
 <div class="modal fade" id="modalCategoria" style="display: none; padding-right: 17px;" aria-modal="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="formEmployee">
+            <form id="formCategoria">
                 <div class="modal-header bg-info">
                     <h4 class="modal-title" id="tituloModal">Registro de Categorias</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -98,7 +98,7 @@ $categorias = CategoriaController::getCategoria();
                     <div class="card hovercard">
                         <div class="card-body">
                             <div class="row">
-                                <input type="hidden" name="idEmpleado" id="idEmpleado" value="0">
+                                <input type="hidden" name="idCategoria" id="idCategoria" value="0">
                                 <div class="col-6-lg col-xl-6 col-sm-12">
                                     <!-- Date dd/mm/yyyy -->
                                     <div class="form-group">
@@ -107,103 +107,6 @@ $categorias = CategoriaController::getCategoria();
                                             <input type="text" class="form-control" name="nombre" id="nombre" value="crack2" placeholder="Ingrese el nombre" autocomplete="off">
                                         </div>
                                         <!-- /.input group -->
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <!-- Date dd/mm/yyyy -->
-                                    <div class="form-group">
-                                        <label>Apellido</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="apellido" id="apellido" value="crack2" placeholder="Ingrese el apellido" autocomplete="off">
-                                        </div>
-                                        <!-- /.input group -->
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Sexo</label>
-                                        <select class="form-control" name="sexo" id="sexo">
-                                            <option value="0" disabled selected>Seleccione una opción</option>
-                                            <?php foreach ($sexo as $key) {
-                                                echo '<option value="' . $key['idSexo'] . '">' . $key['sexo'] . '</option>';
-                                            }  ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Identificacion</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="identificacion" id="identificacion" value="03105697175" placeholder="Ingrese el numero de ducumento" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Usuario</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" name="usuario" id="usuario" autocomplete="off" value="frack" placeholder="Ingrese el nobre de usuario">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Contraseña</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" name="clave" id="clave" autocomplete="off" value="1423" placeholder="Ingrese la contraseña">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label for="tipoUsuario">Tipo de usuario</label>
-                                        <select class="form-control" name="tipoUsuario" id="tipoUsuario" required>
-                                            <option value="0" disabled selected>Seleccione una opción</option>
-                                            <?php foreach ($tipoUsuario as $key) {
-                                                echo '<option value="' . $key['idTipo'] . '">' . $key['descriccion'] . '</option>';
-                                            }  ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Telefono</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" name="telefono" id="telefono" value="849-565-2312" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Correo</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                                            </div>
-                                            <input type="email" class="form-control" name="correo" id="correo" value="fras@fsd.com" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-lg col-xl-6 col-sm-12">
-                                    <!-- Date dd/mm/yyyy -->
-                                    <div class="form-group">
-                                        <label>Fecha de nacimiento:</label>
-
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                            </div>
-                                            <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento" value="">
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-6-lg col-xl-6 col-sm-12">
@@ -233,7 +136,7 @@ $categorias = CategoriaController::getCategoria();
 <!-- END MODAL REGISTRAR EMPLEADO-->
 
 <!-- SCRIPT PERSONAL -->
-<script src="views/assets/js/empleado.js"></script>
+<script src="views/assets/js/categoria.js"></script>
 <!-- DataTables  & Plugins -->
 
 <link rel="stylesheet" href="views/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
