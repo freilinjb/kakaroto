@@ -35,10 +35,12 @@ $(function () {
       },
 
       submitHandler: function (e) {
-        console.log('evento: ', e);
+        // console.log('evento: ', e);
         const dato = new FormData();
+        let idCategoria = 0;
+        idCategoria = Number($('#idCategoria').val());
 
-        if(Number($('#idCategoria').val()) > 0 ) { 
+        if(idCategoria > 0 ) { 
           dato.append("exec", 'actualizandoCategoria');
           dato.append("idCategoria", Number($('#idCategoria').val()));
           console.log('actualizandoEmpleado');
@@ -54,7 +56,7 @@ $(function () {
 
         console.log('daara: ', dato);
         $.ajax({
-          url: "ajax/EmpleadoAjax.php",
+          url: "ajax/CategoriaAjax.php",
           method: "POST",
           data: dato,
           cache: false,
@@ -62,8 +64,10 @@ $(function () {
           processData: false,
           dataType: "json",
           success: function (respuesta) {
-            if(Number(respuesta.status) == 200) {
-              Swal.fire("Ok!", "Se ha guardado correctamente!", "success").then((result) => {
+            console.log('respuesta: ', respuesta);
+            // return;
+            if(respuesta == true) {
+              Swal.fire("Ok!", `${idCategoria > 0 ? 'Se ha actualizado correctamente!' : 'Se ha guardado correctamente!'}`, "success").then((result) => {
                 location.reload();
               });
             } else {
@@ -76,17 +80,8 @@ $(function () {
             $(".form-control").val("");
             $("#close").click();
 
-            $("#idEmpleado").val("0");
+            $("#idCategoria").val("0");
             $("#nombre").val("");
-            $("#apellido").val("");
-            $("#sexo").val(0);
-            $("#identificacion").val("");
-            $("#usuario").val("");
-            $("#clave").val("");
-            $("#tipoUsuario").val(0);
-            $("#telefono").val("");
-            $("#Correo").val("");
-            $("#fechaNacimiento").val("");
             $("#estado").val(1);
           },
         });
@@ -95,18 +90,9 @@ $(function () {
   });
 
   //SETEA EL CAMPO DE idEmpleado que esta oculto
-  $('#registroCliente').click(function() {
-    $('#idEmpleado').val(0);
+  $('#registrarCategoria').click(function() {
+    $('#idCategoria').val(0);
     $("#nombre").val("");
-    $("#apellido").val("");
-    $("#sexo").val(0);
-    $("#identificacion").val("");
-    $("#usuario").val("");
-    $("#clave").val("");
-    $("#tipoUsuario").val(0);
-    $("#telefono").val("");
-    $("#Correo").val("");
-    $("#fechaNacimiento").val("");
     $("#estado").val(1);
     console.log('click');
   });
@@ -184,8 +170,8 @@ $(function () {
         console.log('editarRespuesta: ', respuesta);
 
 
-        // $("#idEmpleado").val(respuesta["idEmpleado"]);
-        // $("#nombre").val(respuesta["nombre"]);
+        $("#idCategoria").val(respuesta["idCategoria"]);
+        $("#nombre").val(respuesta["categoria"]);
         // $("#apellido").val(respuesta["apellido"]);
         // $("#sexo").val(Number(respuesta["idSexo"]));
         // $("#identificacion").val(respuesta["identificacion"]);
@@ -195,7 +181,7 @@ $(function () {
         // $("#telefono").val(respuesta["telefono"]);
         // $("#Correo").val(respuesta["Correo"]);
         // $("#fechaNacimiento").val(respuesta["fechaNacimiento"]);
-        // $("#estado").val(respuesta["estado"]);
+        $("#estado").val(respuesta["estado"]);
       },
     });
   });

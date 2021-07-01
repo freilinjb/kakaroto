@@ -13,46 +13,34 @@ class CategoriaAjax
     {
 
         $datos = array(
+            "creado_por" => 1,
             "nombre" => $_POST["nombre"],
-            "apellido" => $_POST["apellido"],
-            "sexo" => $_POST["idSexo"],
-            "identificacion" => $_POST["identificacion"],
-            "fechaNacimiento" => $_POST["fechaNacimiento"],
-            "usuario" => $_POST["usuario"],
-            "clave" => $_POST["clave"],
-            "tipoUsuario" => $_POST["tipoUsuario"],
-            "telefono" => $_POST["telefono"],
-            "correo" => $_POST["correo"],
             "estado" => $_POST["estado"],
         );
 
-        $respuesta  = EmpleadoModel::registrarEmpleado($datos);
 
-        // print_r($respuesta);
+        $respuesta  = CategoriaModel::registrarCategoria($datos);
+
+        // print_r($respuesta);die;
         // echo "registrado";
         echo json_encode($respuesta);
     }
 
-    public function actualizandoEmpleado()
+    public function actualizandoCategoria()
     {
 
         $datos = array(
-            "idEmpleado" => $_POST["idEmpleado"],
+            "idCategoria" => $_POST["idCategoria"],
+            "creado_por" => 1,
             "nombre" => $_POST["nombre"],
-            "apellido" => $_POST["apellido"],
-            "sexo" => $_POST["idSexo"],
-            "identificacion" => $_POST["identificacion"],
-            "fechaNacimiento" => $_POST["fechaNacimiento"],
-            "usuario" => $_POST["usuario"],
-            "clave" => $_POST["clave"],
-            "tipoUsuario" => $_POST["tipoUsuario"],
-            "telefono" => $_POST["telefono"],
-            "correo" => $_POST["correo"],
             "estado" => $_POST["estado"],
         );
 
-        $respuesta  = EmpleadoModel::registrarEmpleado($datos);
 
+        $respuesta  = CategoriaModel::registrarCategoria($datos);
+
+        // print_r($respuesta);die;
+        // echo "registrado";
         echo json_encode($respuesta);
     }
 
@@ -101,8 +89,8 @@ if (isset($_POST['exec']) && !empty($_POST['exec'])) {
             // echo "hola mundo";
             break;
 
-        case 'actualizandoEmpleado':
-            $ejecutar->registrarCategoria();
+        case 'actualizandoCategoria':
+            $ejecutar->actualizandoCategoria();
             // echo "hola mundo";
             break;
 

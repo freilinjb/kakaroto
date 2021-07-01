@@ -35,7 +35,7 @@ $categorias = CategoriaController::getCategoria();
                     </div>
                     <div class="card-body">
                         <div class="">
-                            <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalCategoria" id="registroCliente">
+                            <button class="btn btn-info mb-3" data-toggle="modal" data-target="#modalCategoria" id="registrarCategoria">
                                 <strong> + </strong> Categoria
                             </button>
                         </div>

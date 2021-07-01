@@ -28,8 +28,35 @@ class CategoriaModel
              $respuesta->execute();
              return $respuesta->fetch();
         }
+    }
 
+    static public function registrarCategoria($datos)
+    {
   
+      // if(isset($datos["idEmpleado"]) && $datos["idEmpleado"] > 0) {
+      //   echo "existe";
+      // } else {
+      //   echo "no existe";
+      // }
+    //   echo $_SESSION["nombre"];
+        // print_r($datos);
 
+      if (isset($datos["idCategoria"]) && $datos["idCategoria"] > 0) { /// NUEVO EMPLEADO
+        $respuesta = Conection::connect()->prepare("UPDATE categoria c SET c.descripcion = ?, c.estado = ? WHERE c.idCategoria = ?");
+        $respuesta->bindParam("1", $datos["nombre"], PDO::PARAM_STR);
+        $respuesta->bindParam("2", $datos["estado"], PDO::PARAM_BOOL);
+        $respuesta->bindParam("3", $datos["idCategoria"], PDO::PARAM_INT);
+  
+        return$respuesta->execute();
+         //$respuesta->fetch();
+      } else { /// EDITAR EMPLEADO
+        $respuesta = Conection::connect()->prepare("INSERT INTO categoria(descripcion, estado, creado_por) VALUES(?,?,?);");
+        $respuesta->bindParam("1", $datos["nombre"], PDO::PARAM_STR);
+        $respuesta->bindParam("2", $datos["estado"], PDO::PARAM_INT);
+        $respuesta->bindParam("3", $datos["creado_por"], PDO::PARAM_INT);
+  
+        return $respuesta->execute();
+        //  $respuesta->fetch();
+      }
     }
 }
