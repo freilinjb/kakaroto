@@ -17,6 +17,7 @@ require_once "Controllers/OperacionesController.php";
 require_once "Controllers/EmpleadoController.php";
 
 require_once "Controllers/ProductoController.php";
+require_once "Controllers/CategoriaController.php";
 
 // require_once "Controllers/ProvedoresController.php";
 
@@ -37,6 +38,7 @@ require_once "Models/OperacionesModel.php";
 require_once "Models/EmpleadoModel.php";
 
 require_once "Models/ProductoModel.php";
+require_once "Models/CategoriaModel.php";
 //PROVEEDOR
 // require_once "Models/ProvedoresModel";
 

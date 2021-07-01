@@ -85,7 +85,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/ventas_crack/index.php?route=provedores" <?php if ($_GET['route'] == "provedores") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
+                                            <a href="/ventas_crack/index.php?route=categoria" <?php if ($_GET['route'] == "categoria") { ?> class="nav-link active" <?php } else { ?> class="nav-link" <?php } ?>>
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p> Categoria</p>
                                             </a>
